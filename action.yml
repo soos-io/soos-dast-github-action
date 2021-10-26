@@ -1,0 +1,68 @@
+name: 'SOOS DAST Analysis'
+description: 'The SOOS GitHub Action to perform the DAST Analysis'
+inputs:
+  client_id:
+    description: ''
+    required: true
+  api_key:
+    description: ''
+    required: true
+  project_name:
+    description: ''
+    required: true
+  scan_mode:
+    description: ''
+    required: true
+    default: 'baseline'
+  api_url:
+    description: ''
+    required: true
+    default: 'https://api.soos.io/api/'
+  target_url:
+    description: ''
+    required: true
+  debug:
+    description: ''
+    required: false
+    default: 'false'
+  ajax_spider:
+    description: ''
+    required: false
+    default: 'false'
+  rules:
+    description: ''
+    required: false
+  context_file:
+    description: ''
+    required: false
+  context_user:
+    description: ''
+    required: false
+  full_scan_minutes:
+    description: ''
+    required: false
+  api_scan_format:
+    description: ''
+    required: false
+  active_scan_level:
+    description: ''
+    required: false
+    default: 'PASS'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.client_id }}
+    - ${{ inputs.api_key }}
+    - ${{ inputs.project_name }}
+    - ${{ inputs.scan_mode }}
+    - ${{ inputs.debug }}
+    - ${{ inputs.ajax_spider }}
+    - ${{ inputs.api_url }}
+    - ${{ inputs.rules }}
+    - ${{ inputs.context_file }}
+    - ${{ inputs.context_user }}
+    - ${{ inputs.full_scan_minutes }}
+    - ${{ inputs.api_scan_format }}
+    - ${{ inputs.active_scan_level }}
+    - ${{ inputs.target_url }}
