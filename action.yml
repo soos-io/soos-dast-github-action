@@ -1,6 +1,9 @@
-name: 'SOOS DAST Analysis'
-description: 'The SOOS GitHub Action to perform the DAST Analysis'
+name: 'SOOS DAST'
+author: 'SOOS'
+description: 'The affordable no limit web vulnerability scanner.'
+
 inputs:
+
   client_id:
     description: ''
     required: true
@@ -48,21 +51,19 @@ inputs:
     description: ''
     required: false
     default: 'PASS'
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
+
   args:
-    - ${{ inputs.client_id }}
-    - ${{ inputs.api_key }}
-    - ${{ inputs.project_name }}
-    - ${{ inputs.scan_mode }}
-    - ${{ inputs.debug }}
-    - ${{ inputs.ajax_spider }}
-    - ${{ inputs.api_url }}
-    - ${{ inputs.rules }}
-    - ${{ inputs.context_file }}
-    - ${{ inputs.context_user }}
-    - ${{ inputs.full_scan_minutes }}
-    - ${{ inputs.api_scan_format }}
-    - ${{ inputs.active_scan_level }}
+    - ${{ format('--clientId={0}', inputs.client_id) }}
+    - ${{ format('--apiKey={0}', inputs.api_key) }}
+    - ${{ format('--projectName={0}', inputs.project_name) }}
+    - ${{ format('--scanMode={0}', inputs.scan_mode) }}
+    - ${{ format('--apiURL={0}', inputs.api_url) }}
+    - ${{ inputs.debug == true && '--debug' || null }}
+    - ${{ inputs.ajax_spider == true && '--ajaxSpider' || null }}
+    - ${{ inputs.rules != '' && format('--rules={0}', inputs.rules) || null }}
+    - --integrationName="Github Action"
     - ${{ inputs.target_url }}

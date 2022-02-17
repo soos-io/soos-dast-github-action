@@ -1,4 +1,5 @@
-FROM ghcr.io/soos-abenassi/dast:0.6
+FROM soosio/dast
+
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 USER root
@@ -9,3 +10,4 @@ RUN chmod +x /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["-h"]
