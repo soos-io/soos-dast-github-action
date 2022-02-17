@@ -1,6 +1,9 @@
 name: 'SOOS DAST'
 author: 'SOOS'
 description: 'The affordable no limit web vulnerability scanner.'
+branding:
+  icon: "alert-triangle"
+  color: "blue"
 
 inputs:
 
