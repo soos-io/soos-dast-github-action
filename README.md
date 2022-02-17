@@ -1,31 +1,20 @@
-# SOOS DAST Analysis GitHub Actions
+# SOOS DAST
 
-The SOOS DAST Analysis for GitHub implements the SOOS DAST Analysis's integration for CircleCI.
+The affordable no limit web vulnerability scanner.
 
-## How to Use
+Use **SOOS DAST** to:
 
-Currently, you can integrate the SOOS DAST Analysis with CircleCI using the [SOOS DAST Analysis CircleCI Orb](https://circleci.com/developer/orbs) in your workflow file. 
-
-### Parameters
-| Name              | Required                    | Description                                                                                          |
-|-------------------|-----------------------------|------------------------------------------------------------------------------------------------------|
-| `client_id`       | Yes                         | SOOS client id                                                                                       |
-| `api_key`         | Yes                         | SOOS API key                                                                                         |
-| `project_name`    | Yes                         | SOOS project name                                                                                    |
-| `scan_mode`       | Yes                         | SOOS DAST scan mode. Values: `baseline` (Default), `fullscan`, or `apiscan`                          |
-| `api_url`         | Yes                         | SOOS API URL. By Default: `https://api.soos.io/api/`                                                 |
-| `debug`           |                             | show debug messages                                                                                  |
-| `ajax_spider`     |                             | use the Ajax spider in addition to the traditional one                                               |
-| `rules`           |                             | rules file to use for `INFO`, `IGNORE` or `FAIL` warnings                                            |
-| `context_file`    |                             | context file which will be loaded prior to scanning the target. Required for authenticated URLs      |
-| `context_user`    |                             | username to use for authenticated scans - must be defined in the given context file                  |
-| `fullscan_minutes`| Required by `Full Analysis` | the number of minutes for spider to run                                                              |
-| `apiscan_format`  | Required by `API Analysis`  | target API format: `openapi`, `soap`, or `graphql`                                                   |
-| `level`           |                             | minimum level to show: `PASS`, `IGNORE`, `INFO`, `WARN` or `FAIL`                                    |
-| `target_url`      | Yes                         | target URL including the protocol, eg https://www.example.com                                        |
+1. Scan web apps and APIs defined by **OpenAPI**, **SOAP**, or **GraphQL**
+2. Containerized solution runs in your environment
+3. Manage issues via single-pane web dashboard shared with [SOOS SCA](https://github.com/marketplace/actions/soos-sca-github-action)
+4. Track tickets in Jira or GitHub Issues
 
 
-### Example
+## How to use it:
+
+You can use the Action as follows:
+
+- Update the `.github/workflow/main.yml`file to include a step like this
 ``` yaml
 on: [push]
 
@@ -35,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/dast@v1
+        uses: soos-io/soos-dast-github-action@v1
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
