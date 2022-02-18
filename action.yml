@@ -65,8 +65,5 @@ runs:
     - ${{ format('--projectName={0}', inputs.project_name) }}
     - ${{ format('--scanMode={0}', inputs.scan_mode) }}
     - ${{ format('--apiURL={0}', inputs.api_url) }}
-    - ${{ inputs.debug == true && '--debug' || null }}
-    - ${{ inputs.ajax_spider == true && '--ajaxSpider' || null }}
-    - ${{ inputs.rules != '' && format('--rules={0}', inputs.rules) || null }}
     - --integrationName="Github Action"
-    - ${{ inputs.target_url }}
+    - ${{ format('--rules={0}', inputs.rules)[inputs.rules != ''] inputs.target_url }}
