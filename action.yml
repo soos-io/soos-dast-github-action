@@ -8,41 +8,41 @@ branding:
 inputs:
 
   client_id:
-    description: ''
+    description: 'SOOS Client Id'
     required: true
   api_key:
-    description: ''
+    description: 'SOOS API Key'
     required: true
   project_name:
-    description: ''
+    description: 'SOOS project name'
     required: true
   scan_mode:
-    description: ''
+    description: 'SOOS DAST scan mode. Values available: baseline, fullscan, or apiscan'
     required: true
     default: 'baseline'
   api_url:
-    description: ''
+    description: 'SOOS API URL'
     required: true
     default: 'https://api.soos.io/api/'
   target_url:
     description: ''
     required: true
   debug:
-    description: ''
+    description: 'show debug messages'
     required: false
     default: 'false'
   ajax_spider:
-    description: ''
+    description: ' use the Ajax spider in addition to the traditional one'
     required: false
     default: 'false'
   rules:
-    description: ''
+    description: 'rules file to use to INFO, IGNORE or FAIL warnings'
     required: false
   context_file:
-    description: ''
+    description: 'context file which will be loaded prior to scanning the target'
     required: false
   context_user:
-    description: ''
+    description: 'username to use for authenticated scans - must be defined in the given context file'
     required: false
   full_scan_minutes:
     description: ''
@@ -51,9 +51,18 @@ inputs:
     description: ''
     required: false
   active_scan_level:
-    description: ''
+    description: 'minimum level to show: PASS, IGNORE, INFO, WARN or FAIL'
     required: false
     default: 'PASS'
+  zap_options:
+    description: 'ZAP Additional Options'
+    required: false
+  request_cookies:
+    description: 'Set Cookie values for the requests to the target URL'
+    required: false
+  request_header:
+    description: 'Set extra header requests'
+    required: false
 
 runs:
   using: 'docker'
@@ -66,4 +75,4 @@ runs:
     - ${{ format('--scanMode={0}', inputs.scan_mode) }}
     - ${{ format('--apiURL={0}', inputs.api_url) }}
     - --integrationName="Github Action"
-    - ${{ format('--rules={0}', inputs.rules)[inputs.rules != ''] inputs.target_url }}
+    - ${{ format('--rules={0}', inputs.rules)[inputs.rules != ''] format('--contextFile={0}', inputs.context_file)[inputs.context_file != ''] format('--contextUser={0}', inputs.context_user)[inputs.context_user != ''] inputs.target_url }}
