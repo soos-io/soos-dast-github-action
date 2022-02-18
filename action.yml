@@ -75,4 +75,4 @@ runs:
     - ${{ format('--scanMode={0}', inputs.scan_mode) }}
     - ${{ format('--apiURL={0}', inputs.api_url) }}
     - --integrationName="Github Action"
-    - ${{ format('--rules={0}', inputs.rules)[inputs.rules != ''] format('--contextFile={0}', inputs.context_file)[inputs.context_file != ''] format('--contextUser={0}', inputs.context_user)[inputs.context_user != ''] inputs.target_url }}
+    - ${{ inputs.target_url }}
