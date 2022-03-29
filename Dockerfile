@@ -1,4 +1,4 @@
-FROM soosio/dast
+FROM soosio/dast:beta
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
