@@ -1,12 +1,10 @@
 name: 'SOOS DAST'
 author: 'SOOS'
-description: 'The affordable no limit web vulnerability scanner.'
+description: 'The SOOS GitHub Action to perform the DAST Analysis'
 branding:
   icon: "alert-triangle"
   color: "blue"
-
 inputs:
-
   client_id:
     description: 'SOOS Client Id'
     required: true
@@ -14,10 +12,11 @@ inputs:
     description: 'SOOS API Key'
     required: true
   project_name:
-    description: 'SOOS project name'
+    description: 'The project name that will be displayed on the dashboard. By Default is owner/repository_name'
     required: true
+    default: ${{ github.repository }}
   scan_mode:
-    description: 'SOOS DAST scan mode. Values available: baseline, fullscan, or apiscan'
+    description: 'SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan'
     required: true
     default: 'baseline'
   api_url:
@@ -28,32 +27,56 @@ inputs:
     description: ''
     required: true
   debug:
-    description: 'show debug messages'
+    description: 'Show debug messages'
     required: false
     default: 'false'
   ajax_spider:
-    description: ' use the Ajax spider in addition to the traditional one'
+    description: 'Enable the Ajax spider in addition to the traditional one'
     required: false
     default: 'false'
   rules:
     description: 'rules file to use to INFO, IGNORE or FAIL warnings'
     required: false
   context_file:
-    description: 'context file which will be loaded prior to scanning the target'
+    description: 'Context file which will be loaded prior to scanning the target'
     required: false
   context_user:
-    description: 'username to use for authenticated scans - must be defined in the given context file'
+    description: 'Username to use for authenticated scans - must be defined in the given context file'
     required: false
   full_scan_minutes:
     description: ''
     required: false
   api_scan_format:
-    description: ''
+    description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan'
     required: false
   active_scan_level:
-    description: 'minimum level to show: PASS, IGNORE, INFO, WARN or FAIL'
+    description: 'Minimum level to show: PASS (Default), IGNORE, INFO, WARN or FAIL'
     required: false
     default: 'PASS'
+  branch_uri:
+    description: 'URI to branch from SCM system.'
+    required: false
+    default: ''
+  build_version:
+    description: 'Version of application build artifacts.'
+    required: false
+    default: ''
+  build_uri:
+    description: 'URI to CI build info.'
+    required: false
+    default: ''
+  operating_environment:
+    description: 'System info regarding operating system, etc.'
+    required: false
+    default: ${{ runner.os }}
+  sarif:
+    description: 'System info regarding operating system, etc.'
+    required: false
+    default: 'false'
+  gpat:
+    description: 'System info regarding operating system, etc.'
+    required: false
+    default: ''
   zap_options:
     description: 'ZAP Additional Options'
     required: false
@@ -63,16 +86,30 @@ inputs:
   request_header:
     description: 'Set extra header requests'
     required: false
-
 runs:
   using: 'docker'
   image: 'Dockerfile'
-
   args:
-    - ${{ format('--clientId={0}', inputs.client_id) }}
-    - ${{ format('--apiKey={0}', inputs.api_key) }}
-    - ${{ format('--projectName={0}', inputs.project_name) }}
-    - ${{ format('--scanMode={0}', inputs.scan_mode) }}
-    - ${{ format('--apiURL={0}', inputs.api_url) }}
-    - --integrationName="Github Action"
+    - ${{ inputs.client_id }}
+    - ${{ inputs.api_key }}
+    - ${{ inputs.project_name }}
+    - ${{ inputs.scan_mode }}
+    - ${{ inputs.debug }}
+    - ${{ inputs.ajax_spider }}
+    - ${{ inputs.api_url }}
+    - ${{ inputs.rules }}
+    - ${{ inputs.context_file }}
+    - ${{ inputs.context_user }}
+    - ${{ inputs.full_scan_minutes }}
+    - ${{ inputs.api_scan_format }}
+    - ${{ inputs.active_scan_level }}
+    - ${{ inputs.branch_uri }}
+    - ${{ inputs.build_version }}
+    - ${{ inputs.build_uri }}
+    - ${{ inputs.operating_environment }}
+    - ${{ inputs.zap_options }}
+    - ${{ inputs.request_cookies }}
+    - ${{ inputs.request_header }}
+    - ${{ inputs.sarif }}
+    - ${{ inputs.gpat }}
     - ${{ inputs.target_url }}
