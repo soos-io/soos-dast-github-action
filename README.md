@@ -39,6 +39,36 @@ You can choose between three Jobs:
 - [Full Analysis](#full-analysis)
 - [API Analysis](#api-analysis)
 
+The `soos-io/soos-dast-github-action` Action has properties which are passed to the action using `with`.
+
+| Property                         | Default                    | Description                                                                                                                                                                                                                                   |
+|----------------------------------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| client_id                         | [none] | The Client Id provided to you when subscribing to SOOS services.                                                                                                                                                                           |
+| api_key                         | [none] | The Api Key provided to you when subscribing to SOOS services.                                                                                                                                                                           |
+| api_url                         | "https://api.soos.io/api/" | The API BASE URI provided to you when subscribing to SOOS services.                                                                                                                                                                           |
+| project_name                     | [none]                     | REQUIRED. A custom project name that will present itself as a collection of test results within your soos.io dashboard. For SARIF Report, it should be `{repository_owner}/{repository_name}`                                                 |
+| scan_mode                     | baseline                     | SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan.                                                 |                                          
+| target_url                     | [none]                     | Target URL to perform the scan against.                                                 |
+| debug                     | false                     | Show debug messages.       
+| ajax_spider                     | false                     | Enable the Ajax spider in addition to the traditional one.    
+| rules                     | [none]                     | Rules file to use to INFO, IGNORE or FAIL warnings.    
+| context_file                     | [none]                     | Context file which will be loaded prior to scanning the target
+| context_user                     | [none]                    | Username to use for authenticated scans - must be defined in the given context file.    
+| full_scan_minutes                     | [none]                    | The number of minutes for spider to run (required if scanmode is fullScan).    
+| api_scan_format                     | [none]                     | Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.    
+| active_scan_level                     | PASS                     | Minimum level to show: PASS (Default), IGNORE, INFO, WARN or FAIL.    
+| commit_hash                      | [none]                     | The commit hash value from the SCM System. Required for SARIF Report                                                                                                                                                                          |
+| branch_name                      | [none]                     | The name of the branch from the SCM System. Required for SARIF Report                                                                                                                                                                         |
+| branch_uri                       | [none]                     | The URI to the branch from the SCM System                                                                                                                                                                                                     |
+| build_version                    | [none]                     | Version of application build artifacts                                                                                                                                                                                                        |
+| build_uri                        | [none]                     | URI to CI build info                                                                                                                                                                                                                          |
+| operating_environment            | [none]                     | System info regarding operating system, etc.                                                                                                                                                                                                  |
+| sarif                            | false                      | Enable Uploading the SARIF Report to GitHub.                                                                                                                                                                                                  |
+| gpat                             | [none]                     | GitHub Personal Access Token. Required to upload SARIF Report                                                                                                                                                                           
+| zap_options                     | [none]                     | ZAP Additional Options.  
+| request_header                     | [none]                     | Set extra header requests.    
+| request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
+
 
 #### Baseline Analysis
 It runs the [ZAP](https://www.zaproxy.org/) spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.

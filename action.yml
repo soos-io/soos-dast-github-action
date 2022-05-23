@@ -24,7 +24,7 @@ inputs:
     required: true
     default: 'https://api.soos.io/api/'
   target_url:
-    description: ''
+    description: 'Target URL to perform the scan against.'
     required: true
   debug:
     description: 'Show debug messages'
@@ -44,7 +44,7 @@ inputs:
     description: 'Username to use for authenticated scans - must be defined in the given context file'
     required: false
   full_scan_minutes:
-    description: ''
+    description: 'The number of minutes for spider to run (required if scanmode is fullScan)'
     required: false
   api_scan_format:
     description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan'
@@ -70,11 +70,11 @@ inputs:
     required: false
     default: ${{ runner.os }}
   sarif:
-    description: 'System info regarding operating system, etc.'
+    description: 'Generate SARIF Report'
     required: false
     default: 'false'
   gpat:
-    description: 'System info regarding operating system, etc.'
+    description: 'Github Personal Access Token to upload SARIF Report.'
     required: false
     default: ''
   zap_options:
