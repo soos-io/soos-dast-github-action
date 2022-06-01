@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash
 
 cd /zap/
 
@@ -79,7 +79,7 @@ if [  -n "$SOOS_REQUEST_HEADERS" ]; then
     PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
 fi
 if [  "$SOOS_GENERATE_SARIF_REPORT" -eq 1 ]; then
-    PARAMS+=" --sarif=True"
+    PARAMS+=" --sarif=true"
 fi
 if [ -n "${SOOS_GITHUB_PAT}" ]; then
     PARAMS+=" --gpat ${SOOS_GITHUB_PAT}"
