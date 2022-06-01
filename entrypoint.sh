@@ -79,7 +79,10 @@ if [  -n "$SOOS_REQUEST_HEADERS" ]; then
     PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
 fi
 if [  "$SOOS_GENERATE_SARIF_REPORT" -eq 1 ]; then
-    PARAMS+=" --sarif=True --gpat ${SOOS_GITHUB_PAT}"
+    PARAMS+=" --sarif=True"
+fi
+if [ -n "${SOOS_GITHUB_PAT}" ]; then
+    PARAMS+=" --gpat ${SOOS_GITHUB_PAT}"
 fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
