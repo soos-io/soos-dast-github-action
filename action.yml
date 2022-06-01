@@ -113,4 +113,3 @@ runs:
     - ${{ inputs.sarif }}
     - ${{ inputs.gpat }}
     - ${{ inputs.target_url }}
-    - ${{ github.workspace }}
