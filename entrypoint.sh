@@ -29,14 +29,16 @@ SOOS_GITHUB_PAT=${22}
 
 SOOS_TARGET_URL=${23}
 
+SOOS_CHECKOUT_DIR=${24}
+
 SOOS_INTEGRATION_NAME="GitHub Actions"
 
-PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF}"
+PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir=${GITHUB_WORKSPACE}" 
 
-if [  "$SOOS_DEBUG" -eq 1 ]; then
+if [  "$SOOS_DEBUG" == "true"]; then
     PARAMS+=" --debug True"
 fi
-if [  "$SOOS_AJAX_SPIDER" -eq 1 ]; then
+if [  "$SOOS_AJAX_SPIDER" == "true" ]; then
     PARAMS+=" --ajaxSpider True"
 fi
 if [ -n "$SOOS_RULES" ]; then
@@ -78,8 +80,11 @@ fi
 if [  -n "$SOOS_REQUEST_HEADERS" ]; then
     PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
 fi
-if [  "$SOOS_GENERATE_SARIF_REPORT" -eq 1 ]; then
-    PARAMS+=" --sarif=True --gpat ${SOOS_GITHUB_PAT}"
+if [  "$SOOS_GENERATE_SARIF_REPORT" == "true" ]; then
+    PARAMS+=" --sarif=true"
+fi
+if [ -n "${SOOS_GITHUB_PAT}" ]; then
+    PARAMS+=" --gpat ${SOOS_GITHUB_PAT}"
 fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
