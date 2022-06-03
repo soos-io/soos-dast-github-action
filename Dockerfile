@@ -1,4 +1,4 @@
-FROM soosio/dast:sarifchanges
+FROM soosio/dast:sarifchanges2
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
