@@ -24,7 +24,7 @@ SOOS_OPERATING_ENVIRONMENT=${17}
 SOOS_ZAP_OPTIONS=${18}
 SOOS_REQUEST_COOKIES=${19}
 SOOS_REQUEST_HEADERS=${20}
-SOOS_GENERATE_SARIF_REPORT=${21}
+SOOS_OUTPUTFORMAT=${21}
 SOOS_GITHUB_PAT=${22}
 
 SOOS_TARGET_URL=${23}
@@ -80,8 +80,8 @@ fi
 if [  -n "$SOOS_REQUEST_HEADERS" ]; then
     PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
 fi
-if [  "$SOOS_GENERATE_SARIF_REPORT" == "true" ]; then
-    PARAMS+=" --sarif=true"
+if [ -n "$SOOS_OUTPUTFORMAT" ]; then
+    PARAMS+=" --outputFormat= ${SOOS_OUTPUTFORMAT}"
 fi
 if [ -n "${SOOS_GITHUB_PAT}" ]; then
     PARAMS+=" --gpat ${SOOS_GITHUB_PAT}"

@@ -69,10 +69,10 @@ inputs:
     description: 'System info regarding operating system, etc.'
     required: false
     default: ${{ runner.os }}
-  sarif:
-    description: 'Generate SARIF Report'
+  output_format:
+    description: 'Output format for report to be generated (only sarif supported at the moment)'
     required: false
-    default: 'false'
+    default: ''
   gpat:
     description: 'Github Personal Access Token to upload SARIF Report.'
     required: false
@@ -110,6 +110,6 @@ runs:
     - ${{ inputs.zap_options }}
     - ${{ inputs.request_cookies }}
     - ${{ inputs.request_header }}
-    - ${{ inputs.sarif }}
+    - ${{ inputs.output_format }}
     - ${{ inputs.gpat }}
     - ${{ inputs.target_url }}
