@@ -33,7 +33,7 @@ SOOS_CHECKOUT_DIR=${24}
 
 SOOS_INTEGRATION_NAME="GitHub Actions"
 
-PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir=${GITHUB_WORKSPACE}" 
+PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE}" 
 
 if [  "$SOOS_DEBUG" == "true"]; then
     PARAMS+=" --debug True"
