@@ -80,5 +80,6 @@ if [  -n "$SOOS_REQUEST_HEADERS" ]; then
 fi
 if [ -n "$SOOS_OUTPUT_FORMAT" ]; then
     PARAMS+=" --outputFormat ${SOOS_OUTPUT_FORMAT}"
+fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
