@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.0.2
+        uses: soos-io/soos-dast-github-action@v1.0.3
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -61,8 +61,7 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | build_version                    | [none]                     | Version of application build artifacts                                                                                                                                                                                                        |
 | build_uri                        | [none]                     | URI to CI build info                                                                                                                                                                                                                          |
 | operating_environment            | [none]                     | System info regarding operating system, etc.                                                                                                                                                                                                  |
-| sarif                            | false                      | Enable Uploading the SARIF Report to GitHub.                                                                                                                                                                                                  |
-| gpat                             | [none]                     | GitHub Personal Access Token. Required to upload SARIF Report                                                                                                                                                                           
+| output_format                            | [none]                      | Output in which the vulnerability report will be generated, only sarif is supported at the moment                       |                                                                                                                                                                          
 | zap_options                     | [none]                     | ZAP Additional Options.  
 | request_header                     | [none]                     | Set extra header requests.    
 | request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    

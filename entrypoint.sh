@@ -24,15 +24,14 @@ SOOS_OPERATING_ENVIRONMENT=${17}
 SOOS_ZAP_OPTIONS=${18}
 SOOS_REQUEST_COOKIES=${19}
 SOOS_REQUEST_HEADERS=${20}
-SOOS_GENERATE_SARIF_REPORT=${21}
-SOOS_GITHUB_PAT=${22}
+SOOS_OUTPUT_FORMAT=${21}
 
-SOOS_TARGET_URL=${23}
+SOOS_TARGET_URL=${22}
 
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
 
-PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF}" 
+PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE}" 
 
 if [  "$SOOS_DEBUG" == "true"]; then
     PARAMS+=" --debug True"
@@ -79,11 +78,8 @@ fi
 if [  -n "$SOOS_REQUEST_HEADERS" ]; then
     PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
 fi
-if [  "$SOOS_GENERATE_SARIF_REPORT" == "true" ]; then
-    PARAMS+=" --sarif=true"
-fi
-if [ -n "${SOOS_GITHUB_PAT}" ]; then
-    PARAMS+=" --gpat ${SOOS_GITHUB_PAT}"
+if [ -n "$SOOS_OUTPUT_FORMAT" ]; then
+    PARAMS+=" --outputFormat ${SOOS_OUTPUT_FORMAT}"
 fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
