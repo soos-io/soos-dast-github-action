@@ -73,10 +73,6 @@ inputs:
     description: 'Output format for report to be generated (only sarif supported at the moment)'
     required: false
     default: ''
-  gpat:
-    description: 'Github Personal Access Token to upload SARIF Report.'
-    required: false
-    default: ''
   zap_options:
     description: 'ZAP Additional Options'
     required: false
@@ -111,5 +107,4 @@ runs:
     - ${{ inputs.request_cookies }}
     - ${{ inputs.request_header }}
     - ${{ inputs.output_format }}
-    - ${{ inputs.gpat }}
     - ${{ inputs.target_url }}
