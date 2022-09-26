@@ -141,14 +141,14 @@ runs:
     - ${{ inputs.request_header }}
     - ${{ inputs.output_format }}
     - ${{ inputs.target_url }}
-    - ${{inputs.report_request_headers }}
-    - ${{inputs.bearer_token }}
-    - ${{inputs.auth_username }}
-    - ${{inputs.auth_password }}
-    - ${{inputs.auth_login_url }}
-    - ${{inputs.auth_username_field }}
-    - ${{inputs.auth_password_field }}
-    - ${{inputs.auth_submit_field }}
-    - ${{inputs.auth_submit_action }}
-    - ${{inputs.oauth_token_url }}
-    - ${{inputs.oauth_parameters }}
+    - ${{ inputs.report_request_headers }}
+    - ${{ inputs.bearer_token }}
+    - ${{ inputs.auth_username }}
+    - ${{ inputs.auth_password }}
+    - ${{ inputs.auth_login_url }}
+    - ${{ inputs.auth_username_field }}
+    - ${{ inputs.auth_password_field }}
+    - ${{ inputs.auth_submit_field }}
+    - ${{ inputs.auth_submit_action }}
+    - ${{ inputs.oauth_token_url }}
+    - ${{ inputs.oauth_parameters }}
