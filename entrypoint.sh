@@ -88,7 +88,7 @@ if [  -n "$SOOS_REQUEST_COOKIES"  ]; then
     PARAMS+=" --requestCookies ${SOOS_REQUEST_COOKIES}"
 fi
 if [  -n "$SOOS_REQUEST_HEADERS" ]; then
-    PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
+    PARAMS+=" --requestHeaders ${SOOS_REQUEST_HEADERS}"
 fi
 if [ -n "$SOOS_OUTPUT_FORMAT" ]; then
     PARAMS+=" --outputFormat ${SOOS_OUTPUT_FORMAT}"

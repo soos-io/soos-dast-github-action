@@ -65,7 +65,17 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | zap_options                     | [none]                     | ZAP Additional Options.  
 | request_header                     | [none]                     | Set extra header requests.    
 | request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
-
+| report_request_headers                     | [none]                     | Include request/response headers data in report.
+| bearer_token                     | [none]                     | Bearer token to include as authorization header in every request.    
+| auth_username                     | [none]                     | Username to use in auth apps.    
+| auth_password                     | [none]                     | Password to use in auth apps.
+| auth_login_url                     | [none]                     | Login url to use in auth apps.  
+| auth_username_field                     | [none]                     | Username input id to use in auth apps.    
+| auth_password_field                     | [none]                     | Password input id to use in auth apps.
+| auth_submit_field                     | [none]                     | Submit button id to use in auth apps.   
+| auth_submit_action                     | [none]                     | Submit action to perform on form filled. Possible values are click or submit. 
+| oauth_token_url                     | [none]                     | The fully qualified authentication URL that grants the access_token.    
+| oauth_parameters                     | [none]                     | Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).  
 
 #### Baseline Analysis
 It runs the [ZAP](https://www.zaproxy.org/) spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.
