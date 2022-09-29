@@ -84,6 +84,6 @@ fi
 
 ls
 
-find .
+find ~/ -type f -name "analysis-openapi.json"
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
