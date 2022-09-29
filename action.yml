@@ -85,8 +85,6 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  volumes:
-    - ./:/zap/wrk/:rw
   args:
     - ${{ inputs.client_id }}
     - ${{ inputs.api_key }}
