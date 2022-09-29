@@ -130,7 +130,7 @@ jobs:
         target_url: "https://www.example.com/"
 ```
 
-### Authenticate thought a login form and get the auth token.
+### Authenticate throughout a login form and get the auth token.
 
 Using this option there will be an automated login form authentication performed before running the DAST scan to get the bearer token that will be then added to every request as the authorization header.
 
