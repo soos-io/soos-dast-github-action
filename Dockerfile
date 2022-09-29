@@ -6,11 +6,7 @@ USER root
 WORKDIR /zap
 COPY entrypoint.sh /entrypoint.sh
 
-VOLUME /zap/wrk/
-
-RUN ls
-
-RUN find .
+COPY analysis-openapi.json /zap/wrk/
 
 RUN chmod +x /entrypoint.sh
 
