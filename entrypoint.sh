@@ -82,4 +82,8 @@ if [ -n "$SOOS_OUTPUT_FORMAT" ]; then
     PARAMS+=" --outputFormat ${SOOS_OUTPUT_FORMAT}"
 fi
 
+ls
+
+find .
+
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
