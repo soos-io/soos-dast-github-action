@@ -94,7 +94,7 @@ This means that the script does perform actual ‘attacks’ and can potentially
 By default, it reports all alerts as WARNings but you can specify a config file which can change any rules to FAIL or IGNORE. The configuration works in a very similar way as the [Baseline Analysis](#baseline-analysis)
 
 #### API Analysis
-It is tuned for performing scans against APIs defined by `OpenAPI`, `SOAP`, or `GraphQL` via either a local file or a URL.
+It is tuned for performing scans against APIs defined by `OpenAPI`, `SOAP`, or `GraphQL` via a URL where the spec file is publicly available.
 
 It imports the definition that you specify and then runs an `Active Scan` against the URLs found. The `Active Scan` is tuned to APIs, so it doesn't bother looking for things like `XSSs`.
 
