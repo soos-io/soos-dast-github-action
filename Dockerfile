@@ -6,8 +6,6 @@ USER root
 WORKDIR /zap
 COPY entrypoint.sh /entrypoint.sh
 
-COPY analysis-openapi.json /zap/wrk/
-
 RUN chmod +x /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
