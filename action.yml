@@ -1,56 +1,56 @@
 name: 'SOOS DAST'
 author: 'SOOS'
-description: 'The SOOS GitHub Action to perform the DAST Analysis'
+description: 'The SOOS GitHub Action to perform the DAST Analysis.'
 branding:
   icon: "alert-triangle"
   color: "blue"
 inputs:
   client_id:
-    description: 'SOOS Client Id'
+    description: 'SOOS Client Id.'
     required: true
   api_key:
-    description: 'SOOS API Key'
+    description: 'SOOS API Key.'
     required: true
   project_name:
-    description: 'The project name that will be displayed on the dashboard. By Default is owner/repository_name'
+    description: 'The project name that will be displayed on the dashboard. By Default is owner/repository_name.'
     required: true
     default: ${{ github.repository }}
   scan_mode:
-    description: 'SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan'
+    description: 'SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan.'
     required: true
     default: 'baseline'
   api_url:
-    description: 'SOOS API URL'
+    description: 'SOOS API URL.'
     required: true
     default: 'https://api.soos.io/api/'
   target_url:
     description: 'Target URL to perform the scan against.'
     required: true
   debug:
-    description: 'Show debug messages'
+    description: 'Show debug messages.'
     required: false
     default: 'false'
   ajax_spider:
-    description: 'Enable the Ajax spider in addition to the traditional one'
+    description: 'Enable the Ajax spider in addition to the traditional one.'
     required: false
     default: 'false'
   rules:
-    description: 'rules file to use to INFO, IGNORE or FAIL warnings'
+    description: 'rules file to use to INFO, IGNORE or FAIL warnings.'
     required: false
   context_file:
-    description: 'Context file which will be loaded prior to scanning the target'
+    description: 'Context file which will be loaded prior to scanning the target.'
     required: false
   context_user:
-    description: 'Username to use for authenticated scans - must be defined in the given context file'
+    description: 'Username to use for authenticated scans - must be defined in the given context file.'
     required: false
   full_scan_minutes:
-    description: 'The number of minutes for spider to run (required if scanmode is fullScan)'
+    description: 'The number of minutes for spider to run (required if scanmode is fullScan).'
     required: false
   api_scan_format:
-    description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan'
+    description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.'
     required: false
   active_scan_level:
-    description: 'Minimum level to show: PASS (Default), IGNORE, INFO, WARN or FAIL'
+    description: 'Minimum level to show: PASS (Default), IGNORE, INFO, WARN or FAIL.'
     required: false
     default: 'PASS'
   branch_uri:
@@ -70,17 +70,50 @@ inputs:
     required: false
     default: ${{ runner.os }}
   output_format:
-    description: 'Output format for report to be generated (only sarif supported at the moment)'
+    description: 'Output format for report to be generated (only sarif supported at the moment).'
     required: false
     default: ''
   zap_options:
-    description: 'ZAP Additional Options'
+    description: 'ZAP Additional Options.'
     required: false
   request_cookies:
-    description: 'Set Cookie values for the requests to the target URL'
+    description: 'Set Cookie values for the requests to the target URL.'
     required: false
   request_header:
-    description: 'Set extra header requests'
+    description: 'Set extra header requests.'
+    required: false
+  report_request_headers:
+    description: 'Include request/response headers data in report.'
+    required: false
+  bearer_token:
+    description: 'Bearer token to include as authorization header in every request.'
+    required: false
+  auth_username:
+    description: 'Username to use in auth apps.'
+    required: false
+  auth_password:
+    description: 'Password to use in auth apps.'
+    required: false
+  auth_login_url:
+    description: 'Login url to use in auth apps.' 
+    required: false
+  auth_username_field:
+    description: 'Username input id to use in auth apps.'
+    required: false
+  auth_password_field:
+    description: 'Password input id to use in auth apps.'
+    required: false
+  auth_submit_field:
+    description: 'Submit button id to use in auth apps.'
+    required: false
+  auth_submit_action: 
+    description: 'Submit action to perform on form filled. Possible values are click or submit.'
+    required: false
+  oauth_token_url:
+    description: 'The fully qualified authentication URL that grants the access_token.'
+    required: false
+  oauth_parameters:
+    description: 'Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).'
     required: false
 runs:
   using: 'docker'
@@ -108,3 +141,14 @@ runs:
     - ${{ inputs.request_header }}
     - ${{ inputs.output_format }}
     - ${{ inputs.target_url }}
+    - ${{ inputs.report_request_headers }}
+    - ${{ inputs.bearer_token }}
+    - ${{ inputs.auth_username }}
+    - ${{ inputs.auth_password }}
+    - ${{ inputs.auth_login_url }}
+    - ${{ inputs.auth_username_field }}
+    - ${{ inputs.auth_password_field }}
+    - ${{ inputs.auth_submit_field }}
+    - ${{ inputs.auth_submit_action }}
+    - ${{ inputs.oauth_token_url }}
+    - ${{ inputs.oauth_parameters }}

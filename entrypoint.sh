@@ -28,6 +28,18 @@ SOOS_OUTPUT_FORMAT=${21}
 
 SOOS_TARGET_URL=${22}
 
+SOOS_REPORT_REQUEST_HEADERS=${23}
+SOOS_BEARER_TOKEN=${24}
+SOOS_AUTH_USERNAME=${25}
+SOOS_AUTH_PASSWORD=${26}
+SOOS_AUTH_LOGIN_URL=${27}
+SOOS_AUTH_USERNAME_FIELD=${28}
+SOOS_AUTH_PASSWORD_FIELD=${29}
+SOOS_AUTH_SUBMIT_FIELD=${30}
+SOOS_AUTH_SUBMIT_ACTION=${31}
+SOOS_OAUTH_TOKEN_URL=${32}
+SOOS_OAUTH_PARAMETERS=${33}
+
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
 
@@ -76,10 +88,43 @@ if [  -n "$SOOS_REQUEST_COOKIES"  ]; then
     PARAMS+=" --requestCookies ${SOOS_REQUEST_COOKIES}"
 fi
 if [  -n "$SOOS_REQUEST_HEADERS" ]; then
-    PARAMS+=" --requestHeader ${SOOS_REQUEST_HEADERS}"
+    PARAMS+=" --requestHeaders ${SOOS_REQUEST_HEADERS}"
 fi
 if [ -n "$SOOS_OUTPUT_FORMAT" ]; then
     PARAMS+=" --outputFormat ${SOOS_OUTPUT_FORMAT}"
+fi
+if [  "$SOOS_REPORT_REQUEST_HEADERS" == "true"]; then
+    PARAMS+=" --reportRequestHeaders=true"
+fi
+if [ -n "$SOOS_BEARER_TOKEN" ]; then
+    PARAMS+=" --bearerToken ${SOOS_BEARER_TOKEN}"
+fi
+if [ -n "$SOOS_AUTH_USERNAME" ]; then
+    PARAMS+=" --authUsername ${SOOS_AUTH_USERNAME}"
+fi
+if [ -n "$SOOS_AUTH_PASSWORD" ]; then
+    PARAMS+=" --authPassword ${SOOS_AUTH_PASSWORD}"
+fi
+if [ -n "$SOOS_AUTH_LOGIN_URL" ]; then
+    PARAMS+=" --authLoginURL ${SOOS_AUTH_LOGIN_URL}"
+fi
+if [ -n "$SOOS_AUTH_USERNAME_FIELD" ]; then
+    PARAMS+=" --authUsernameField ${SOOS_AUTH_USERNAME_FIELD}"
+fi
+if [ -n "$SOOS_AUTH_PASSWORD_FIELD" ]; then
+    PARAMS+=" --authPasswordField ${SOOS_AUTH_PASSWORD_FIELD}"
+fi
+if [ -n "$SOOS_AUTH_SUBMIT_FIELD" ]; then
+    PARAMS+=" --authSubmitField ${SOOS_AUTH_SUBMIT_FIELD}"
+fi
+if [ -n "$SOOS_AUTH_SUBMIT_ACTION" ]; then
+    PARAMS+=" --authSubmitAction ${SOOS_AUTH_SUBMIT_ACTION}"
+fi
+if [ -n "$SOOS_OAUTH_TOKEN_URL" ]; then
+    PARAMS+=" --oauthTokenUrl ${SOOS_OAUTH_TOKEN_URL}"
+fi
+if [ -n "$SOOS_OAUTH_PARAMETERS" ]; then
+    PARAMS+=" --oauthParameters ${SOOS_OAUTH_PARAMETERS}"
 fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
