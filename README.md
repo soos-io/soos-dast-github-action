@@ -65,7 +65,7 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | zap_options                     | [none]                     | ZAP Additional Options.  
 | request_header                     | [none]                     | Set extra header requests.    
 | request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
-| report_request_headers                     | [none]                     | Include request/response headers data in report.
+| report_request_headers                     | True                     | Include request/response headers data in report.
 | bearer_token                     | [none]                     | Bearer token to include as authorization header in every request.    
 | auth_username                     | [none]                     | Username to use in auth apps.    
 | auth_password                     | [none]                     | Password to use in auth apps.
