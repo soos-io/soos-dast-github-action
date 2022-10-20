@@ -84,6 +84,7 @@ inputs:
     required: false
   report_request_headers:
     description: 'Include request/response headers data in report.'
+    default: 'True'
     required: false
   bearer_token:
     description: 'Bearer token to include as authorization header in every request.'
