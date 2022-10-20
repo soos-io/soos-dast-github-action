@@ -93,8 +93,8 @@ fi
 if [ -n "$SOOS_OUTPUT_FORMAT" ]; then
     PARAMS+=" --outputFormat ${SOOS_OUTPUT_FORMAT}"
 fi
-if [  "$SOOS_REPORT_REQUEST_HEADERS" == "true"]; then
-    PARAMS+=" --reportRequestHeaders=true"
+if [ -n "$SOOS_REPORT_REQUEST_HEADERS"]; then
+    PARAMS+=" --reportRequestHeaders  ${SOOS_REPORT_REQUEST_HEADERS}"
 fi
 if [ -n "$SOOS_BEARER_TOKEN" ]; then
     PARAMS+=" --bearerToken ${SOOS_BEARER_TOKEN}"
