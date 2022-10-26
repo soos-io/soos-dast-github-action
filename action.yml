@@ -19,6 +19,10 @@ inputs:
     description: 'SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan.'
     required: true
     default: 'baseline'
+  on_failure:
+    description: "Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure (Default)"
+    required: false
+    default: 'continue_on_failure'
   api_url:
     description: 'SOOS API URL.'
     required: true
@@ -153,3 +157,4 @@ runs:
     - ${{ inputs.auth_submit_action }}
     - ${{ inputs.oauth_token_url }}
     - ${{ inputs.oauth_parameters }}
+    - ${{ inputs.on_failure }}
