@@ -1,4 +1,4 @@
-FROM soosio/dast:experimental
+FROM soosio/dast:githubaction
 
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
