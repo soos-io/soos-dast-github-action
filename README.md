@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.2.1
+        uses: soos-io/soos-dast-github-action@v1.2.2
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -48,6 +48,7 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | api_url                         | "https://api.soos.io/api/" | The API BASE URI provided to you when subscribing to SOOS services.                                                                                                                                                                           |
 | project_name                     | [none]                     | REQUIRED. A custom project name that will present itself as a collection of test results within your soos.io dashboard. For SARIF Report, it should be `{repository_owner}/{repository_name}`                                                 |
 | scan_mode                     | baseline                     | SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan.                                                 |                                          
+| on_failure                     | continue_on_failure                     | Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure.                                                |                                          
 | target_url                     | [none]                     | Target URL to perform the scan against.                                                 |
 | debug                     | false                     | Show debug messages.       
 | ajax_spider                     | false                     | Enable the Ajax spider in addition to the traditional one.    
