@@ -53,10 +53,10 @@ inputs:
   api_scan_format:
     description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.'
     required: false
-  active_scan_level:
-    description: 'Minimum level to show: PASS (Default), IGNORE, INFO, WARN or FAIL.'
+  level:
+    description: 'Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL.'
     required: false
-    default: 'PASS'
+    default: 'INFO'
   branch_uri:
     description: 'URI to branch from SCM system.'
     required: false
