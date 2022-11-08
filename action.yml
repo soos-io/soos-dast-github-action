@@ -136,7 +136,7 @@ runs:
     - ${{ inputs.context_user }}
     - ${{ inputs.full_scan_minutes }}
     - ${{ inputs.api_scan_format }}
-    - ${{ inputs.active_scan_level }}
+    - ${{ inputs.level }}
     - ${{ inputs.branch_uri }}
     - ${{ inputs.build_version }}
     - ${{ inputs.build_uri }}
