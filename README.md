@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.2.2
+        uses: soos-io/soos-dast-github-action@v1.2.3
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -57,7 +57,7 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | context_user                     | [none]                    | Username to use for authenticated scans - must be defined in the given context file.    
 | full_scan_minutes                     | [none]                    | The number of minutes for spider to run (required if scanmode is fullScan).    
 | api_scan_format                     | [none]                     | Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.    
-| active_scan_level                     | PASS                     | Minimum level to show: PASS (Default), IGNORE, INFO, WARN or FAIL.    
+| level                     | INFO                     | Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL
 | branch_uri                       | [none]                     | The URI to the branch from the SCM System                                                                                                                                                                                                     |
 | build_version                    | [none]                     | Version of application build artifacts                                                                                                                                                                                                        |
 | build_uri                        | [none]                     | URI to CI build info                                                                                                                                                                                                                          |
