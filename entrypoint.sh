@@ -1,11 +1,5 @@
 #!/bin/bash -l
 
-# find check_version.py
-CHECK_VERSION_PY=$(find / -name check_version.py)
-
-# echo CHECK_VERSION_PY
-echo "CHECK_VERSION_PY: ${CHECK_VERSION_PY}"
-
 # run check_version.py
 python3 /check_version.py
 
