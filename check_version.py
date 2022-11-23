@@ -8,9 +8,11 @@ r = requests.get('https://api.github.com/repos/soos-io/soos-dast-github-action/r
 latest_tag = r.json()['tag_name']
 commit_hash = r.json()['target_commitish']
 
-# print current directory os.system
-print(os.getcwd())
-# find if path exists
+# print all the environment variables and values
+print('Environment variables:')
+for key, value in os.environ.items():
+    print(key, value)
+
 os.system("find / -type d -name *PA-7353")
 
 
