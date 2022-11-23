@@ -5,6 +5,7 @@ FROM soosio/dast:latest
 USER root
 WORKDIR /zap
 COPY entrypoint.sh /entrypoint.sh
+COPY check_version.py /check_version.py
 
 RUN chmod +x /entrypoint.sh
 
