@@ -8,8 +8,10 @@ r = requests.get('https://api.github.com/repos/soos-io/soos-dast-github-action/r
 latest_tag = r.json()['tag_name']
 commit_hash = r.json()['target_commitish']
 
+# print current directory os.system
+print(os.getcwd())
 # find if path exists
-os.system("find / -type d -name soos-dast-github-action")
+os.system("find / -type d -name *PA-7353")
 
 
 # compare
