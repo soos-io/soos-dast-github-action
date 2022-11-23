@@ -1,5 +1,9 @@
 #!/bin/bash -l
 
+# check version of the action first
+
+python3 check_version.py
+
 cd /zap/
 
 SOOS_CLIENT_ID=$1
