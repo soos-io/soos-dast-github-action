@@ -1,10 +1,7 @@
 #!/bin/bash -l
 
-# find check_version.py
-CHECK_VERSION_PY=$(find / -name check_version.py)
-
 # run check_version.py
-python $CHECK_VERSION_PY
+python3 check_version.py
 
 cd /zap/
 
