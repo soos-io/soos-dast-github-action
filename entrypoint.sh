@@ -1,7 +1,6 @@
 #!/bin/bash -l
 
-# run check_version.py
-python3 /check_version.py
+SOOS_APP_VERSION=$(python3 /check_version.py)
 
 cd /zap/
 
@@ -47,7 +46,7 @@ SOOS_OAUTH_PARAMETERS=${33}
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
 
-PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE}" 
+PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE} --appVersion ${SOOS_APP_VERSION}" 
 
 if [  "$SOOS_DEBUG" == "true"]; then
     PARAMS+=" --debug True"
