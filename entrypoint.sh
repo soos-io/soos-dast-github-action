@@ -1,6 +1,8 @@
 #!/bin/bash -l
 
-SOOS_APP_VERSION=$(python3 /check_version.py)
+python3 /check_version.py
+
+SOOS_APP_VERSION=${GITHUB_ACTION_REF}
 
 cd /zap/
 
