@@ -1,6 +1,6 @@
 #!/bin/bash -l
 
-SOOS_APP_VERSION=$(python3 /check_version.py)
+SOOS_APP_VERSION=$(python3 /check_version.py | tail -1)
 
 cd /zap/
 
