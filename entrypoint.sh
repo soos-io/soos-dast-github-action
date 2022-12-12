@@ -1,5 +1,8 @@
 #!/bin/bash -l
 
+# run check_version.py
+python3 /check_version.py
+
 cd /zap/
 
 SOOS_CLIENT_ID=$1
