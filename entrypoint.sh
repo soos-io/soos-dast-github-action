@@ -134,14 +134,11 @@ fi
 if [ -n "$SOOS_OAUTH_PARAMETERS" ]; then
     PARAMS+=" --oauthParameters ${SOOS_OAUTH_PARAMETERS}"
 fi
-fi
 if [  -n "$SOOS_AUTH_SECOND_SUBMIT_FIELD" ]; then
     PARAMS+=" --authSecondSubmitField ${SOOS_AUTH_SECOND_SUBMIT_FIELD}"
 fi
-fi
 if [  -n "$SOOS_AUTH_FORM_TYPE" ]; then
     PARAMS+=" --authFormType ${SOOS_AUTH_FORM_TYPE}"
-fi
 fi
 if [  -n "$SOOS_AUTH_DELAY_TIME" ]; then
     PARAMS+=" --authDelayTime ${SOOS_AUTH_DELAY_TIME}"
