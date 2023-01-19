@@ -44,6 +44,9 @@ SOOS_AUTH_SUBMIT_FIELD=${30}
 SOOS_AUTH_SUBMIT_ACTION=${31}
 SOOS_OAUTH_TOKEN_URL=${32}
 SOOS_OAUTH_PARAMETERS=${33}
+SOOS_AUTH_SECOND_SUBMIT_FIELD=${34}
+SOOS_AUTH_FORM_TYPE=${35}
+SOOS_AUTH_DELAY_TIME=${36}
 
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
@@ -130,6 +133,18 @@ if [ -n "$SOOS_OAUTH_TOKEN_URL" ]; then
 fi
 if [ -n "$SOOS_OAUTH_PARAMETERS" ]; then
     PARAMS+=" --oauthParameters ${SOOS_OAUTH_PARAMETERS}"
+fi
+fi
+if [  -n "$SOOS_AUTH_SECOND_SUBMIT_FIELD" ]; then
+    PARAMS+=" --authSecondSubmitField ${SOOS_AUTH_SECOND_SUBMIT_FIELD}"
+fi
+fi
+if [  -n "$SOOS_AUTH_FORM_TYPE" ]; then
+    PARAMS+=" --authFormType ${SOOS_AUTH_FORM_TYPE}"
+fi
+fi
+if [  -n "$SOOS_AUTH_DELAY_TIME" ]; then
+    PARAMS+=" --authDelayTime ${SOOS_AUTH_DELAY_TIME}"
 fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}

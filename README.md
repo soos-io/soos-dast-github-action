@@ -66,12 +66,15 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
 | report_request_headers                     | True                     | Include request/response headers data in report.
 | bearer_token                     | [none]                     | Bearer token to include as authorization header in every request.    
+| auth_form_type                     | [none]                     | simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked).  
 | auth_username                     | [none]                     | Username to use in auth apps.    
 | auth_password                     | [none]                     | Password to use in auth apps.
 | auth_login_url                     | [none]                     | Login url to use in auth apps.  
 | auth_username_field                     | [none]                     | Username input id to use in auth apps.    
 | auth_password_field                     | [none]                     | Password input id to use in auth apps.
 | auth_submit_field                     | [none]                     | Submit button id to use in auth apps.   
+| auth_second_submit_field                     | [none]                     | Second submit button id to use in auth apps (for multi-page forms).  
+| auth_delay_time                     | [none]                     | Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page) 
 | auth_submit_action                     | [none]                     | Submit action to perform on form filled. Possible values are click or submit. 
 | oauth_token_url                     | [none]                     | The fully qualified authentication URL that grants the access_token.    
 | oauth_parameters                     | [none]                     | Parameters to be added to the oauth token request needs to be comma delimited. (eg: client_id:value, client_secret:value, grant_type:value).  

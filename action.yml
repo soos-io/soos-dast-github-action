@@ -111,6 +111,15 @@ inputs:
   auth_submit_field:
     description: 'Submit button id to use in auth apps.'
     required: false
+  auth_second_submit_field:
+    description: 'Second submit button id to use in auth apps (for multi-page forms).'
+    required: false
+  auth_form_type:
+    description: 'simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked)'
+    required: false
+  auth_delay_time:
+    description: 'Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page)'
+    required: false
   auth_submit_action: 
     description: 'Submit action to perform on form filled. Possible values are click or submit.'
     required: false
@@ -158,3 +167,6 @@ runs:
     - ${{ inputs.oauth_token_url }}
     - ${{ inputs.oauth_parameters }}
     - ${{ inputs.on_failure }}
+    - ${{ inputs.auth_second_submit_field }}
+    - ${{ inputs.auth_form_type }}
+    - ${{ inputs.auth_delay_time }}
