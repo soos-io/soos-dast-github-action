@@ -1,14 +1,12 @@
-# SOOS DAST
+# [SOOS DAST](https://soos.io/dast-product/)
 
-The affordable no limit web vulnerability scanner.
+SOOS is an independent software security company, located in Winooski, VT USA, building security software for your team. [SOOS, Software security, simplified](https://soos.io).
 
-Use **SOOS DAST** to:
+Use SOOS to scan your software for [vulnerabilities](https://app.soos.io/research/vulnerabilities) and [open source license](https://app.soos.io/research/licenses) issues with [SOOS Core SCA](https://soos.io/sca-product). [Generate SBOMs](https://kb.soos.io/help/generating-a-software-bill-of-materials-sbom). Govern your open source dependencies. Run the [SOOS DAST vulnerability scanner](https://soos.io/dast-product) against your web apps or APIs.
 
-1. Scan web apps and APIs defined by **OpenAPI**, **SOAP**, or **GraphQL**
-2. Containerized solution runs in your environment
-3. Manage issues via single-pane web dashboard shared with [SOOS SCA](https://github.com/marketplace/actions/soos-sca-github-action)
-4. Track tickets in Jira or GitHub Issues
+[Demo SOOS](https://app.soos.io/demo) or [Register for a Free Trial](https://app.soos.io/register).
 
+If you maintain an Open Source project, sign up for the Free as in Beer [SOOS Community Edition](https://soos.io/products/community-edition).
 
 ## How to use it:
 
@@ -24,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.2.3
+        uses: soos-io/soos-dast-github-action@v1.2.5
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -68,12 +66,15 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
 | report_request_headers                     | True                     | Include request/response headers data in report.
 | bearer_token                     | [none]                     | Bearer token to include as authorization header in every request.    
+| auth_form_type                     | [none]                     | simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked).  
 | auth_username                     | [none]                     | Username to use in auth apps.    
 | auth_password                     | [none]                     | Password to use in auth apps.
 | auth_login_url                     | [none]                     | Login url to use in auth apps.  
 | auth_username_field                     | [none]                     | Username input id to use in auth apps.    
 | auth_password_field                     | [none]                     | Password input id to use in auth apps.
 | auth_submit_field                     | [none]                     | Submit button id to use in auth apps.   
+| auth_second_submit_field                     | [none]                     | Second submit button id to use in auth apps (for multi-page forms).  
+| auth_delay_time                     | [none]                     | Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page) 
 | auth_submit_action                     | [none]                     | Submit action to perform on form filled. Possible values are click or submit. 
 | oauth_token_url                     | [none]                     | The fully qualified authentication URL that grants the access_token.    
 | oauth_parameters                     | [none]                     | Parameters to be added to the oauth token request needs to be comma delimited. (eg: client_id:value, client_secret:value, grant_type:value).  
@@ -120,7 +121,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing bearer token authentication
-      uses: soos-io/soos-dast-github-action@v1.2.0
+      uses: soos-io/soos-dast-github-action@v1.2.5
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
@@ -148,7 +149,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing form authentication
-      uses: soos-io/soos-dast-github-action@v1.2.0
+      uses: soos-io/soos-dast-github-action@v1.2.5
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
@@ -181,7 +182,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing OAuth
-      uses: soos-io/soos-dast-github-action@v1.2.0
+      uses: soos-io/soos-dast-github-action@v1.2.5
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}

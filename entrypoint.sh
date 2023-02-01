@@ -1,5 +1,9 @@
 #!/bin/bash -l
 
+python3 /check_version.py
+
+SOOS_APP_VERSION=${GITHUB_ACTION_REF}
+
 cd /zap/
 
 SOOS_CLIENT_ID=$1
@@ -40,11 +44,14 @@ SOOS_AUTH_SUBMIT_FIELD=${30}
 SOOS_AUTH_SUBMIT_ACTION=${31}
 SOOS_OAUTH_TOKEN_URL=${32}
 SOOS_OAUTH_PARAMETERS=${33}
+SOOS_AUTH_SECOND_SUBMIT_FIELD=${35}
+SOOS_AUTH_FORM_TYPE=${36}
+SOOS_AUTH_DELAY_TIME=${37}
 
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
 
-PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE}" 
+PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE} --appVersion ${SOOS_APP_VERSION}" 
 
 if [  "$SOOS_DEBUG" == "true"]; then
     PARAMS+=" --debug True"
@@ -126,6 +133,15 @@ if [ -n "$SOOS_OAUTH_TOKEN_URL" ]; then
 fi
 if [ -n "$SOOS_OAUTH_PARAMETERS" ]; then
     PARAMS+=" --oauthParameters ${SOOS_OAUTH_PARAMETERS}"
+fi
+if [  -n "$SOOS_AUTH_SECOND_SUBMIT_FIELD" ]; then
+    PARAMS+=" --authSecondSubmitField ${SOOS_AUTH_SECOND_SUBMIT_FIELD}"
+fi
+if [  -n "$SOOS_AUTH_FORM_TYPE" ]; then
+    PARAMS+=" --authFormType ${SOOS_AUTH_FORM_TYPE}"
+fi
+if [  -n "$SOOS_AUTH_DELAY_TIME" ]; then
+    PARAMS+=" --authDelayTime ${SOOS_AUTH_DELAY_TIME}"
 fi
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
