@@ -47,6 +47,9 @@ inputs:
   context_user:
     description: 'Username to use for authenticated scans - must be defined in the given context file.'
     required: false
+  disable_rules:
+    description: 'Comma separated list of ZAP rules IDs to disable. List for reference https://www.zaproxy.org/docs/alerts/. (e.g. 10001,10002)'
+    required: false
   full_scan_minutes:
     description: 'The number of minutes for spider to run (required if scanmode is fullScan).'
     required: false
@@ -170,3 +173,4 @@ runs:
     - ${{ inputs.auth_second_submit_field }}
     - ${{ inputs.auth_form_type }}
     - ${{ inputs.auth_delay_time }}
+    - ${{ inputs.disable_rules }}
