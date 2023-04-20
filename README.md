@@ -53,6 +53,7 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | rules                     | [none]                     | Rules file to use to INFO, IGNORE or FAIL warnings.    
 | context_file                     | [none]                     | Context file which will be loaded prior to scanning the target
 | context_user                     | [none]                    | Username to use for authenticated scans - must be defined in the given context file.    
+| disable_rules                     | [none]                    | Comma separated list of ZAP rules IDs to disable. List for reference https://www.zaproxy.org/docs/alerts/. (e.g. 10001,10002)    
 | full_scan_minutes                     | [none]                    | The number of minutes for spider to run (required if scanmode is fullScan).    
 | api_scan_format                     | [none]                     | Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.    
 | level                     | INFO                     | Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL
