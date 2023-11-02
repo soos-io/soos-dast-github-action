@@ -21,6 +21,7 @@ SOOS_FULL_SCAN_MINUTES=${11}
 SOOS_API_SCAN_FORMAT=${12}
 SOOS_LEVEL=${13}
 
+SOOS_BRANCH_NAME=${39}
 SOOS_BRANCH_URI=${14}
 SOOS_BUILD_VERSION=${15}
 SOOS_BUILD_URI=${16}
@@ -52,7 +53,7 @@ SOOS_DISABLE_RULES=${38}
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
 
-PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${GITHUB_REF} --checkoutDir ${GITHUB_WORKSPACE} --appVersion ${SOOS_APP_VERSION}" 
+PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${SOOS_BRANCH_NAME} --checkoutDir ${GITHUB_WORKSPACE} --appVersion ${SOOS_APP_VERSION}" 
 
 if [  "$SOOS_DEBUG" == "true"]; then
     PARAMS+=" --debug True"

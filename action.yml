@@ -64,6 +64,10 @@ inputs:
     description: 'URI to branch from SCM system.'
     required: false
     default: ''
+  branch_name:
+    description: 'Branch Name to create scan under'
+    required: false
+    default: ${{ GITHUB_REF }}
   build_version:
     description: 'Version of application build artifacts.'
     required: false
@@ -174,3 +178,4 @@ runs:
     - ${{ inputs.auth_form_type }}
     - ${{ inputs.auth_delay_time }}
     - ${{ inputs.disable_rules }}
+    - ${{ inputs.branch_name }}
