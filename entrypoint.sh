@@ -152,6 +152,5 @@ fi
 if [ -n "$SOOS_DISABLE_RULES" ]; then
     PARAMS+=" --disableRules ${SOOS_DISABLE_RULES}"
 fi
-if [ -]
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}
