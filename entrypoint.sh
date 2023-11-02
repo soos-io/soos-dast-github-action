@@ -53,6 +53,10 @@ SOOS_DISABLE_RULES=${38}
 SOOS_INTEGRATION_NAME="GitHub"
 SOOS_INTEGRATION_TYPE="Plugin"
 
+if [ -z "$SOOS_BRANCH_NAME" ]; then
+    SOOS_BRANCH_NAME=${GITHUB_REF}
+fi
+
 PARAMS="--clientId ${SOOS_CLIENT_ID} --apiKey ${SOOS_API_KEY} --projectName ${SOOS_PROJECT_NAME} --scanMode ${SOOS_SCAN_MODE} --onFailure ${SOOS_ON_FAILURE} --apiURL ${SOOS_API_BASE_URL} --integrationName ${SOOS_INTEGRATION_NAME} --integrationType ${SOOS_INTEGRATION_TYPE} --commitHash ${GITHUB_SHA} --branchName ${SOOS_BRANCH_NAME} --checkoutDir ${GITHUB_WORKSPACE} --appVersion ${SOOS_APP_VERSION}" 
 
 if [  "$SOOS_DEBUG" == "true"]; then
@@ -148,5 +152,6 @@ fi
 if [ -n "$SOOS_DISABLE_RULES" ]; then
     PARAMS+=" --disableRules ${SOOS_DISABLE_RULES}"
 fi
+if [ -]
 
 python3 main.py ${SOOS_TARGET_URL} ${PARAMS}

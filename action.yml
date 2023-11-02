@@ -67,7 +67,7 @@ inputs:
   branch_name:
     description: 'Branch Name to create scan under'
     required: false
-    default: ${{ GITHUB_REF }}
+    default: ''
   build_version:
     description: 'Version of application build artifacts.'
     required: false
