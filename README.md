@@ -57,7 +57,8 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | full_scan_minutes                     | [none]                    | The number of minutes for spider to run (required if scanmode is fullScan).    
 | api_scan_format                     | [none]                     | Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.    
 | level                     | INFO                     | Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL
-| branch_uri                       | [none]                     | The URI to the branch from the SCM System                                                                                                                                                                                                     |
+| branch_uri                       | [none]                     | The URI to the branch from the SCM system
+| branch_name                       | GITHUB_REF (branch name from build)                     | Branch Name to create scan under
 | build_version                    | [none]                     | Version of application build artifacts                                                                                                                                                                                                        |
 | build_uri                        | [none]                     | URI to CI build info                                                                                                                                                                                                                          |
 | operating_environment            | [none]                     | System info regarding operating system, etc.                                                                                                                                                                                                  |
