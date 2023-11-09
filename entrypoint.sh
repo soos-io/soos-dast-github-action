@@ -60,4 +60,6 @@ PARAMS=(
 
 PARAMS_STRING="${PARAMS[@]}"
 
-python3 main.py "${SOOS_TARGET_URL}" ${PARAMS_STRING}
+ls -la
+
+node dist/indexj.s "${SOOS_TARGET_URL}" ${PARAMS_STRING}
