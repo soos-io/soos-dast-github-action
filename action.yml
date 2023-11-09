@@ -38,14 +38,8 @@ inputs:
     description: 'Enable the Ajax spider in addition to the traditional one.'
     required: false
     default: 'false'
-  rules:
-    description: 'rules file to use to INFO, IGNORE or FAIL warnings.'
-    required: false
   context_file:
     description: 'Context file which will be loaded prior to scanning the target.'
-    required: false
-  context_user:
-    description: 'Username to use for authenticated scans - must be defined in the given context file.'
     required: false
   disable_rules:
     description: 'Comma separated list of ZAP rules IDs to disable. List for reference https://www.zaproxy.org/docs/alerts/. (e.g. 10001,10002)'
@@ -56,7 +50,7 @@ inputs:
   api_scan_format:
     description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.'
     required: false
-  level:
+  log_level:
     description: 'Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL.'
     required: false
     default: 'INFO'
@@ -105,7 +99,7 @@ inputs:
     required: false
   auth_password:
     description: 'Password to use in auth apps.'
-    required: false
+    required: false    
   auth_login_url:
     description: 'Login url to use in auth apps.' 
     required: false
@@ -136,46 +130,47 @@ inputs:
   oauth_parameters:
     description: 'Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).'
     required: false
+  auth_verification_url:
+    description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.client_id }}
-    - ${{ inputs.api_key }}
-    - ${{ inputs.project_name }}
-    - ${{ inputs.scan_mode }}
-    - ${{ inputs.debug }}
-    - ${{ inputs.ajax_spider }}
-    - ${{ inputs.api_url }}
-    - ${{ inputs.rules }}
-    - ${{ inputs.context_file }}
-    - ${{ inputs.context_user }}
-    - ${{ inputs.full_scan_minutes }}
-    - ${{ inputs.api_scan_format }}
-    - ${{ inputs.level }}
-    - ${{ inputs.branch_uri }}
-    - ${{ inputs.build_version }}
-    - ${{ inputs.build_uri }}
-    - ${{ inputs.operating_environment }}
-    - ${{ inputs.zap_options }}
-    - ${{ inputs.request_cookies }}
-    - ${{ inputs.request_header }}
-    - ${{ inputs.output_format }}
-    - ${{ inputs.target_url }}
-    - ${{ inputs.report_request_headers }}
-    - ${{ inputs.bearer_token }}
-    - ${{ inputs.auth_username }}
-    - ${{ inputs.auth_password }}
-    - ${{ inputs.auth_login_url }}
-    - ${{ inputs.auth_username_field }}
-    - ${{ inputs.auth_password_field }}
-    - ${{ inputs.auth_submit_field }}
-    - ${{ inputs.auth_submit_action }}
-    - ${{ inputs.oauth_token_url }}
-    - ${{ inputs.oauth_parameters }}
-    - ${{ inputs.on_failure }}
-    - ${{ inputs.auth_second_submit_field }}
-    - ${{ inputs.auth_form_type }}
-    - ${{ inputs.auth_delay_time }}
-    - ${{ inputs.disable_rules }}
-    - ${{ inputs.branch_name }}
+  env:
+    SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
+    SOOS_API_KEY: ${{ inputs.api_key }}
+    SOOS_API_SCAN_FORMAT: ${{ inputs.api_scan_format }}
+    SOOS_API_URL: ${{ inputs.api_url }}
+    SOOS_AUTH_DELAY_TIME: ${{ inputs.auth_delay_time }}
+    SOOS_AUTH_FORM_TYPE: ${{ inputs.auth_form_type }}
+    SOOS_AUTH_LOGIN_URL: ${{ inputs.auth_login_url }}
+    SOOS_AUTH_PASSWORD: ${{ inputs.auth_password }}
+    SOOS_AUTH_PASSWORD_FIELD: ${{ inputs.auth_password_field }}
+    SOOS_AUTH_SECOND_SUBMIT_FIELD: ${{ inputs.auth_second_submit_field }}
+    SOOS_AUTH_SUBMIT_ACTION: ${{ inputs.auth_submit_action }}
+    SOOS_AUTH_SUBMIT_FIELD: ${{ inputs.auth_submit_field }}
+    SOOS_AUTH_USERNAME: ${{ inputs.auth_username }}
+    SOOS_AUTH_USERNAME_FIELD: ${{ inputs.auth_username_field }}
+    SOOS_BEARER_TOKEN: ${{ inputs.bearer_token }}
+    SOOS_BRANCH_NAME: ${{ inputs.branch_name }}
+    SOOS_BRANCH_URI: ${{ inputs.branch_uri }}
+    SOOS_BUILD_URI: ${{ inputs.build_uri }}
+    SOOS_BUILD_VERSION: ${{ inputs.build_version }}
+    SOOS_CLIENT_ID: ${{ inputs.client_id }}
+    SOOS_CONTEXT_FILE: ${{ inputs.context_file }}
+    SOOS_CONTEXT_USER: ${{ inputs.context_user }}
+    SOOS_DEBUG: ${{ inputs.debug }}
+    SOOS_DISABLE_RULES: ${{ inputs.disable_rules }}
+    SOOS_FULL_SCAN_MINUTES: ${{ inputs.full_scan_minutes }}
+    SOOS_LOG_LEVEL: ${{ inputs.log_level }}
+    SOOS_OAUTH_PARAMETERS: ${{ inputs.oauth_parameters }}
+    SOOS_OAUTH_TOKEN_URL: ${{ inputs.oauth_token_url }}
+    SOOS_ON_FAILURE: ${{ inputs.on_failure }}
+    SOOS_OPERATING_ENVIRONMENT: ${{ inputs.operating_environment }}
+    SOOS_OUTPUT_FORMAT: ${{ inputs.output_format }}
+    SOOS_PROJECT_NAME: ${{ inputs.project_name }}
+    SOOS_REQUEST_COOKIES: ${{ inputs.request_cookies }}
+    SOOS_REQUEST_HEADER: ${{ inputs.request_header }}
+    SOOS_REPORT_REQUEST_HEADERS: ${{ inputs.report_request_headers }}
+    SOOS_SCAN_MODE: ${{ inputs.scan_mode }}
+    SOOS_TARGET_URL: ${{ inputs.target_url }}
+    SOOS_ZAP_OPTIONS: ${{ inputs.zap_options }}
