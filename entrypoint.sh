@@ -17,7 +17,7 @@ PARAMS=(
     "--projectName ${SOOS_PROJECT_NAME}"
     "--scanMode ${SOOS_SCAN_MODE}"
     "--onFailure ${SOOS_ON_FAILURE}"
-    "--apiURL ${SOOS_API_BASE_URL}"
+    "--apiURL ${SOOS_API_URL}"
     "--integrationName ${SOOS_INTEGRATION_NAME}"
     "--integrationType ${SOOS_INTEGRATION_TYPE}"
     "--commitHash ${GITHUB_SHA}"
