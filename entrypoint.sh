@@ -26,7 +26,6 @@ PARAMS=(
     "--appVersion ${SOOS_APP_VERSION}"
     ${SOOS_DEBUG:+--debug}
     ${SOOS_AJAX_SPIDER:+--ajaxSpider}
-    ${SOOS_RULES:+--rules}
     ${SOOS_CONTEXT_FILE:+--contextFile ${SOOS_CONTEXT_FILE}}
     ${SOOS_CONTEXT_USER:+--contextUser ${SOOS_CONTEXT_USER}}
     ${SOOS_FULL_SCAN_MINUTES:+--fullScanMinutes ${SOOS_FULL_SCAN_MINUTES}}
@@ -59,7 +58,5 @@ PARAMS=(
 )
 
 PARAMS_STRING="${PARAMS[@]}"
-
-ls -la
 
 node dist/index.js "${SOOS_TARGET_URL}" ${PARAMS_STRING}
