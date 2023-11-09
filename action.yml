@@ -134,6 +134,7 @@ inputs:
     description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
   verbose: 
    description: 'Enable verbose logging.'
+   required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
