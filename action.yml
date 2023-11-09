@@ -132,6 +132,8 @@ inputs:
     required: false
   auth_verification_url:
     description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
+  verbose: 
+   description: 'Enable verbose logging.'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -173,4 +175,5 @@ runs:
     SOOS_REPORT_REQUEST_HEADERS: ${{ inputs.report_request_headers }}
     SOOS_SCAN_MODE: ${{ inputs.scan_mode }}
     SOOS_TARGET_URL: ${{ inputs.target_url }}
+    SOOS_VERBOSE: ${{ inputs.verbose }}
     SOOS_ZAP_OPTIONS: ${{ inputs.zap_options }}
