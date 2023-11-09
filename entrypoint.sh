@@ -62,4 +62,4 @@ PARAMS_STRING="${PARAMS[@]}"
 
 ls -la
 
-node dist/indexj.s "${SOOS_TARGET_URL}" ${PARAMS_STRING}
+node dist/index.js "${SOOS_TARGET_URL}" ${PARAMS_STRING}
