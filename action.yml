@@ -87,10 +87,6 @@ inputs:
   request_header:
     description: 'Set extra header requests.'
     required: false
-  report_request_headers:
-    description: 'Include request/response headers data in report.'
-    default: 'True'
-    required: false
   bearer_token:
     description: 'Bearer token to include as authorization header in every request.'
     required: false
@@ -178,7 +174,6 @@ runs:
     SOOS_PROJECT_NAME: ${{ inputs.project_name }}
     SOOS_REQUEST_COOKIES: ${{ inputs.request_cookies }}
     SOOS_REQUEST_HEADER: ${{ inputs.request_header }}
-    SOOS_REPORT_REQUEST_HEADERS: ${{ inputs.report_request_headers }}
     SOOS_SCAN_MODE: ${{ inputs.scan_mode }}
     SOOS_TARGET_URL: ${{ inputs.target_url }}
     SOOS_VERBOSE: ${{ inputs.verbose }}
