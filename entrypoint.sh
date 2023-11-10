@@ -30,7 +30,7 @@ PARAMS=(
     ${SOOS_CONTEXT_USER:+--contextUser ${SOOS_CONTEXT_USER}}
     ${SOOS_FULL_SCAN_MINUTES:+--fullScanMinutes ${SOOS_FULL_SCAN_MINUTES}}
     ${SOOS_API_SCAN_FORMAT:+--apiScanFormat ${SOOS_API_SCAN_FORMAT}}
-    ${SOOS_LEVEL:+--level ${SOOS_LEVEL}}
+    ${SOOS_LOG_LEVEL:+--logLevel ${SOOS_LOG_LEVEL}}
     ${SOOS_BRANCH_URI:+--branchUri ${SOOS_BRANCH_URI}}
     ${SOOS_BUILD_URI:+--buildUri ${SOOS_BUILD_URI}}
     ${SOOS_BUILD_VERSION:+--buildVersion ${SOOS_BUILD_VERSION}}
