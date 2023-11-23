@@ -58,6 +58,5 @@ PARAMS=(
     ${SOOS_OTHER_OPTIONS:+--otherOptions ${SOOS_OTHER_OPTIONS}}
 )
 
-PARAMS_STRING="${PARAMS[@]}"
 
-node dist/index.js "${SOOS_TARGET_URL}" "${PARAMS[@]}"
+node dist/index.js "${SOOS_TARGET_URL}" "${PARAMS[*]}"
