@@ -14,7 +14,7 @@ SOOS_BRANCH_NAME=${SOOS_BRANCH_NAME:-${GITHUB_REF}}
 PARAMS=(
     "--clientId ${SOOS_CLIENT_ID}"
     "--apiKey ${SOOS_API_KEY}"
-    "--projectName ${SOOS_PROJECT_NAME}"
+    "--projectName \"${SOOS_PROJECT_NAME}\""
     "--scanMode ${SOOS_SCAN_MODE}"
     "--onFailure ${SOOS_ON_FAILURE}"
     "--apiURL ${SOOS_API_URL}"
