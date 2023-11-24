@@ -12,18 +12,18 @@ SOOS_INTEGRATION_TYPE="Plugin"
 SOOS_BRANCH_NAME=${SOOS_BRANCH_NAME:-${GITHUB_REF}}
 
 PARAMS=(
-    "--clientId ${SOOS_CLIENT_ID}"
-    "--apiKey ${SOOS_API_KEY}"
+    "--clientId" "${SOOS_CLIENT_ID}"
+    "--apiKey" "${SOOS_API_KEY}"
     "--projectName" "${SOOS_PROJECT_NAME}"
-    "--scanMode ${SOOS_SCAN_MODE}"
-    "--onFailure ${SOOS_ON_FAILURE}"
-    "--apiURL ${SOOS_API_URL}"
-    "--integrationName ${SOOS_INTEGRATION_NAME}"
-    "--integrationType ${SOOS_INTEGRATION_TYPE}"
-    "--commitHash ${GITHUB_SHA}"
-    "--branchName ${SOOS_BRANCH_NAME}"
-    "--checkoutDir ${GITHUB_WORKSPACE}"
-    "--appVersion ${SOOS_APP_VERSION}"
+    "--scanMode" "${SOOS_SCAN_MODE}"
+    "--onFailure" "${SOOS_ON_FAILURE}"
+    "--apiURL" "${SOOS_API_URL}"
+    "--integrationName" "${SOOS_INTEGRATION_NAME}"
+    "--integrationType" "${SOOS_INTEGRATION_TYPE}"
+    "--commitHash" "${GITHUB_SHA}"
+    "--branchName" "${SOOS_BRANCH_NAME}"
+    "--checkoutDir" "${GITHUB_WORKSPACE}"
+    "--appVersion" "${SOOS_APP_VERSION}"
     ${SOOS_DEBUG:+--debug}
     ${SOOS_AJAX_SPIDER:+--ajaxSpider}
     ${SOOS_CONTEXT_FILE:+--contextFile ${SOOS_CONTEXT_FILE}}
