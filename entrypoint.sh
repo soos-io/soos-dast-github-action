@@ -58,5 +58,5 @@ PARAMS=(
     ${SOOS_OTHER_OPTIONS:+--otherOptions ${SOOS_OTHER_OPTIONS}}
 )
 
-
+set -x
 node dist/index.js "${SOOS_TARGET_URL}" ${PARAMS[@]}
