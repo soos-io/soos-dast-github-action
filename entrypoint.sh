@@ -24,7 +24,7 @@ PARAMS=(
     "--branchName" "${SOOS_BRANCH_NAME}"
     "--checkoutDir" "${GITHUB_WORKSPACE}"
     "--appVersion" "${SOOS_APP_VERSION}"
-    ${SOOS_DEBUG:+--debug}
+    ${SOOS_DEBUG -eq 1:+--debug}
     ${SOOS_AJAX_SPIDER:+--ajaxSpider}
     ${SOOS_CONTEXT_FILE:+--contextFile ${SOOS_CONTEXT_FILE}}
     ${SOOS_CONTEXT_USER:+--contextUser ${SOOS_CONTEXT_USER}}
@@ -54,7 +54,7 @@ PARAMS=(
     ${SOOS_AUTH_DELAY_TIME:+--authDelayTime ${SOOS_AUTH_DELAY_TIME}}
     ${SOOS_AUTH_VERIFICATION_URL:+--authVerificationURL ${SOOS_AUTH_VERIFICATION_URL}}
     ${SOOS_DISABLE_RULES:+--disableRules ${SOOS_DISABLE_RULES}}
-    ${SOOS_VERBOSE:+--verbose}
+    ${SOOS_VERBOSE = "true" :+--verbose}
     ${SOOS_OTHER_OPTIONS:+--otherOptions ${SOOS_OTHER_OPTIONS}}
 )
 
