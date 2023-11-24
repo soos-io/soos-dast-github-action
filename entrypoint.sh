@@ -55,9 +55,9 @@ PARAMS=(
     ${SOOS_OTHER_OPTIONS:+--otherOptions ${SOOS_OTHER_OPTIONS}}
 )
 
-[ "$SOOS_DEBUG" == "true" ]; && PARAMS+=("--debug")
-[ "$SOOS_AJAX_SPIDER" == "true" ]; && PARAMS+=("--ajaxSpider")
-[ "$SOOS_VERBOSE" == "true" ]; && PARAMS+=("--verbose")
+[ "$SOOS_DEBUG" == "true" ] && PARAMS+=("--debug")
+[ "$SOOS_AJAX_SPIDER" == "true" ] && PARAMS+=("--ajaxSpider")
+[ "$SOOS_VERBOSE" == "true" ] && PARAMS+=("--verbose")
 
 set -x
 node dist/index.js "${SOOS_TARGET_URL}" "${PARAMS[@]}"
