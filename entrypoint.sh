@@ -24,8 +24,6 @@ PARAMS=(
     "--branchName" "${SOOS_BRANCH_NAME}"
     "--checkoutDir" "${GITHUB_WORKSPACE}"
     "--appVersion" "${SOOS_APP_VERSION}"
-    ${SOOS_DEBUG -eq 1:+--debug}
-    ${SOOS_AJAX_SPIDER:+--ajaxSpider}
     ${SOOS_CONTEXT_FILE:+--contextFile ${SOOS_CONTEXT_FILE}}
     ${SOOS_CONTEXT_USER:+--contextUser ${SOOS_CONTEXT_USER}}
     ${SOOS_FULL_SCAN_MINUTES:+--fullScanMinutes ${SOOS_FULL_SCAN_MINUTES}}
@@ -54,9 +52,12 @@ PARAMS=(
     ${SOOS_AUTH_DELAY_TIME:+--authDelayTime ${SOOS_AUTH_DELAY_TIME}}
     ${SOOS_AUTH_VERIFICATION_URL:+--authVerificationURL ${SOOS_AUTH_VERIFICATION_URL}}
     ${SOOS_DISABLE_RULES:+--disableRules ${SOOS_DISABLE_RULES}}
-    ${SOOS_VERBOSE = "true" :+--verbose}
     ${SOOS_OTHER_OPTIONS:+--otherOptions ${SOOS_OTHER_OPTIONS}}
 )
+
+[ "$SOOS_DEBUG" == "true" ]; && PARAMS+=("--debug")
+[ "$SOOS_AJAX_SPIDER" == "true" ]; && PARAMS+=("--ajaxSpider")
+[ "$SOOS_VERBOSE" == "true" ]; && PARAMS+=("--verbose")
 
 set -x
 node dist/index.js "${SOOS_TARGET_URL}" "${PARAMS[@]}"
