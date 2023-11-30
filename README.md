@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.2.5
+        uses: soos-io/soos-dast-github-action@v2.0.0
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -122,7 +122,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing bearer token authentication
-      uses: soos-io/soos-dast-github-action@v1.2.5
+      uses: soos-io/soos-dast-github-action@v2.0.0
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
@@ -150,7 +150,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing form authentication
-      uses: soos-io/soos-dast-github-action@v1.2.5
+      uses: soos-io/soos-dast-github-action@v2.0.0
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
@@ -183,7 +183,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing OAuth
-      uses: soos-io/soos-dast-github-action@v1.2.5
+      uses: soos-io/soos-dast-github-action@v2.0.0
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
