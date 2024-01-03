@@ -1,5 +1,6 @@
 import requests
 import os
+import re
 
 
 def is_version_number(string):
@@ -13,7 +14,6 @@ try:
     r = requests.get(
         'https://api.github.com/repos/soos-io/soos-dast-github-action/releases/latest')
     latest_tag = r.json()['tag_name']
-    # Convert to integer for comparison
     latest_tag_major = int(latest_tag.split('.')[0].lstrip('v'))
     current_tag = os.environ['GITHUB_ACTION_REF'].split('/')[-1]
 
