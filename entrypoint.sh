@@ -1,6 +1,9 @@
 #!/bin/bash -l
 
 python3 /check_version.py
+if [ $? -eq 1 ]; then
+    exit 1
+fi
 
 SOOS_APP_VERSION=${GITHUB_ACTION_REF}
 
