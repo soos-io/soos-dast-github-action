@@ -33,7 +33,6 @@ try:
             print('Your version is up to date with the latest major release.')
     else:
         print('Current tag does not represent a version number, likely a branch name. Skipping version check.')
-        sys.exit(1)
 
 except requests.exceptions.RequestException as e:
     print('Network error while checking for updates. Please check manually.')
