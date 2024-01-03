@@ -25,12 +25,14 @@ try:
         if current_tag == latest_tag:
             print('This action is up to date.')
         elif current_tag_major < latest_tag_major:
-            raise Exception(
+            print(
                 f'This action is outdated. Please update to a version not older than @v{latest_tag_major}.')
+            exit(1)
         else:
             print('Your version is up to date with the latest major release.')
     else:
         print('Current tag does not represent a version number, likely a branch name. Skipping version check.')
+        exit(1)
 
 except requests.exceptions.RequestException as e:
     print('Network error while checking for updates. Please check manually.')
