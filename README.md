@@ -2,7 +2,7 @@
 
 SOOS is an independent software security company, located in Winooski, VT USA, building security software for your team. [SOOS, Software security, simplified](https://soos.io).
 
-Use SOOS to scan your software for [vulnerabilities](https://app.soos.io/research/vulnerabilities) and [open source license](https://app.soos.io/research/licenses) issues with [SOOS Core SCA](https://soos.io/sca-product). [Generate SBOMs](https://kb.soos.io/help/generating-a-software-bill-of-materials-sbom). Govern your open source dependencies. Run the [SOOS DAST vulnerability scanner](https://soos.io/dast-product) against your web apps or APIs.
+Use SOOS to scan your software for [vulnerabilities](https://app.soos.io/research/vulnerabilities) and [open source license](https://app.soos.io/research/licenses) issues with [SOOS Core SCA](https://soos.io/products/sca). [Generate SBOMs](https://kb.soos.io/help/soos-reports-for-export). Govern your open source dependencies. Run the [SOOS DAST vulnerability scanner](https://soos.io/products/dast) against your web apps or APIs.
 
 [Demo SOOS](https://app.soos.io/demo) or [Register for a Free Trial](https://app.soos.io/register).
 
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run SOOS DAST Analysis
-        uses: soos-io/soos-dast-github-action@v1.2.5
+        uses: soos-io/soos-dast-github-action@v2
         with:
           client_id: ${{ secrets.SOOS_CLIENT_ID }}
           api_key: ${{ secrets.SOOS_API_KEY }}
@@ -57,7 +57,8 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | full_scan_minutes                     | [none]                    | The number of minutes for spider to run (required if scanmode is fullScan).    
 | api_scan_format                     | [none]                     | Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.    
 | level                     | INFO                     | Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL
-| branch_uri                       | [none]                     | The URI to the branch from the SCM System                                                                                                                                                                                                     |
+| branch_uri                       | [none]                     | The URI to the branch from the SCM system
+| branch_name                       | GITHUB_REF (branch name from build)                     | Branch Name to create scan under
 | build_version                    | [none]                     | Version of application build artifacts                                                                                                                                                                                                        |
 | build_uri                        | [none]                     | URI to CI build info                                                                                                                                                                                                                          |
 | operating_environment            | [none]                     | System info regarding operating system, etc.                                                                                                                                                                                                  |
@@ -65,7 +66,6 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | zap_options                     | [none]                     | ZAP Additional Options.  
 | request_header                     | [none]                     | Set extra header requests.    
 | request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
-| report_request_headers                     | True                     | Include request/response headers data in report.
 | bearer_token                     | [none]                     | Bearer token to include as authorization header in every request.    
 | auth_form_type                     | [none]                     | simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked).  
 | auth_username                     | [none]                     | Username to use in auth apps.    
@@ -122,7 +122,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing bearer token authentication
-      uses: soos-io/soos-dast-github-action@v1.2.5
+      uses: soos-io/soos-dast-github-action@v2
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
@@ -150,7 +150,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing form authentication
-      uses: soos-io/soos-dast-github-action@v1.2.5
+      uses: soos-io/soos-dast-github-action@v2
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
@@ -183,7 +183,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Run SOOS DAST Baseline Analysis performing OAuth
-      uses: soos-io/soos-dast-github-action@v1.2.5
+      uses: soos-io/soos-dast-github-action@v2
       with:
         client_id: ${{ secrets.SOOS_CLIENT_ID }}
         api_key: ${{ secrets.SOOS_API_KEY }}
