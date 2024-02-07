@@ -59,5 +59,4 @@ PARAMS=(
 [ "$SOOS_AJAX_SPIDER" == "true" ] && PARAMS+=("--ajaxSpider")
 [ "$SOOS_VERBOSE" == "true" ] && PARAMS+=("--verbose")
 
-set -x
 node dist/index.js "${SOOS_TARGET_URL}" "${PARAMS[@]}"
