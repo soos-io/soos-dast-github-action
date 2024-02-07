@@ -1,143 +1,143 @@
-name: "SOOS DAST"
-author: "SOOS"
-description: "The SOOS GitHub Action to perform the DAST Analysis."
+name: 'SOOS DAST'
+author: 'SOOS'
+description: 'The SOOS GitHub Action to perform the DAST Analysis.'
 branding:
-  icon: "alert-triangle"
-  color: "blue"
+  icon: 'alert-triangle'
+  color: 'blue'
 inputs:
   client_id:
-    description: "SOOS Client Id."
+    description: 'SOOS Client Id.'
     required: true
   api_key:
-    description: "SOOS API Key."
+    description: 'SOOS API Key.'
     required: true
   project_name:
-    description: "The project name that will be displayed on the dashboard. By Default is owner/repository_name."
+    description: 'The project name that will be displayed on the dashboard. By Default is owner/repository_name.'
     required: true
     default: ${{ github.repository }}
   scan_mode:
-    description: "SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan."
+    description: 'SOOS DAST scan mode. Values available: baseline (Default), fullscan, and apiscan.'
     required: true
-    default: "baseline"
+    default: 'baseline'
   on_failure:
-    description: "Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure (Default)"
+    description: 'Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure (Default)'
     required: false
-    default: "continue_on_failure"
+    default: 'continue_on_failure'
   api_url:
-    description: "SOOS API URL."
+    description: 'SOOS API URL.'
     required: true
-    default: "https://api.soos.io/api/"
+    default: 'https://api.soos.io/api/'
   target_url:
-    description: "Target URL to perform the scan against."
+    description: 'Target URL to perform the scan against.'
     required: true
   debug:
-    description: "Show debug messages."
+    description: 'Show debug messages.'
     required: false
-    default: "false"
+    default: 'false'
   ajax_spider:
-    description: "Enable the Ajax spider in addition to the traditional one."
+    description: 'Enable the Ajax spider in addition to the traditional one.'
     required: false
-    default: "false"
+    default: 'false'
   context_file:
-    description: "Context file which will be loaded prior to scanning the target."
+    description: 'Context file which will be loaded prior to scanning the target.'
     required: false
   disable_rules:
-    description: "Comma separated list of ZAP rules IDs to disable. List for reference https://www.zaproxy.org/docs/alerts/. (e.g. 10001,10002)"
+    description: 'Comma separated list of ZAP rules IDs to disable. List for reference https://www.zaproxy.org/docs/alerts/. (e.g. 10001,10002)'
     required: false
   full_scan_minutes:
-    description: "The number of minutes for spider to run (required if scanmode is fullScan)."
+    description: 'The number of minutes for spider to run (required if scanmode is fullScan).'
     required: false
   api_scan_format:
-    description: "Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan."
+    description: 'Target API format: openapi, soap, or graphql. Required for scan_mode: apiscan.'
     required: false
   log_level:
-    description: "Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL."
+    description: 'Log level to show: DEBUG, INFO, WARN, ERROR, CRITICAL.'
     required: false
-    default: "INFO"
+    default: 'INFO'
   branch_uri:
-    description: "URI to branch from SCM system."
+    description: 'URI to branch from SCM system.'
     required: false
-    default: ""
+    default: ''
   branch_name:
-    description: "Branch Name to create scan under"
+    description: 'Branch Name to create scan under'
     required: false
-    default: ""
+    default: ''
   build_version:
-    description: "Version of application build artifacts."
+    description: 'Version of application build artifacts.'
     required: false
-    default: ""
+    default: ''
   build_uri:
-    description: "URI to CI build info."
+    description: 'URI to CI build info.'
     required: false
-    default: ""
+    default: ''
   operating_environment:
-    description: "System info regarding operating system, etc."
+    description: 'System info regarding operating system, etc.'
     required: false
     default: ${{ runner.os }}
   output_format:
-    description: "Output format for report to be generated (only sarif supported at the moment)."
+    description: 'Output format for report to be generated (only sarif supported at the moment).'
     required: false
-    default: ""
+    default: ''
   zap_options:
-    description: "ZAP Additional Options."
+    description: 'ZAP Additional Options.'
     required: false
   request_cookies:
-    description: "Set Cookie values for the requests to the target URL."
+    description: 'Set Cookie values for the requests to the target URL.'
     required: false
   request_headers:
-    description: "Set extra header requests."
+    description: 'Set extra header requests.'
     required: false
   bearer_token:
-    description: "Bearer token to include as authorization header in every request."
+    description: 'Bearer token to include as authorization header in every request.'
     required: false
   auth_username:
-    description: "Username to use in auth apps."
+    description: 'Username to use in auth apps.'
     required: false
   auth_password:
-    description: "Password to use in auth apps."
+    description: 'Password to use in auth apps.'
     required: false
   auth_login_url:
-    description: "Login url to use in auth apps."
+    description: 'Login url to use in auth apps.'
     required: false
   auth_username_field:
-    description: "Username input id to use in auth apps."
+    description: 'Username input id to use in auth apps.'
     required: false
   auth_password_field:
-    description: "Password input id to use in auth apps."
+    description: 'Password input id to use in auth apps.'
     required: false
   auth_submit_field:
-    description: "Submit button id to use in auth apps."
+    description: 'Submit button id to use in auth apps.'
     required: false
   auth_second_submit_field:
-    description: "Second submit button id to use in auth apps (for multi-page forms)."
+    description: 'Second submit button id to use in auth apps (for multi-page forms).'
     required: false
   auth_form_type:
-    description: "simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked)"
+    description: 'simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked)'
     required: false
   auth_delay_time:
-    description: "Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page)"
+    description: 'Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page)'
     required: false
   auth_submit_action:
-    description: "Submit action to perform on form filled. Possible values are click or submit."
+    description: 'Submit action to perform on form filled. Possible values are click or submit.'
     required: false
   oauth_token_url:
-    description: "The fully qualified authentication URL that grants the access_token."
+    description: 'The fully qualified authentication URL that grants the access_token.'
     required: false
   oauth_parameters:
-    description: "Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value)."
+    description: 'Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).'
     required: false
   auth_verification_url:
-    description: "URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated."
+    description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
     required: false
   verbose:
-    description: "Enable verbose logging."
+    description: 'Enable verbose logging.'
     required: false
   other_options:
-    description: "Other command line arguments sent directly to the script for items not supported by other command line arguments"
+    description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: 'docker'
+  image: 'Dockerfile'
   env:
     SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
     SOOS_API_KEY: ${{ inputs.api_key }}
