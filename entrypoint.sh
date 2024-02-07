@@ -60,4 +60,4 @@ PARAMS=(
 [ "$SOOS_VERBOSE" == "true" ] && PARAMS+=("--verbose")
 
 set -x
-node dist/index.js "${SOOS_TARGET_URL}" ${PARAMS[@]}
+node dist/index.js "${SOOS_TARGET_URL}" "${PARAMS[@]}"
