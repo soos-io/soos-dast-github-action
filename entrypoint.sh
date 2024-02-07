@@ -52,7 +52,7 @@ PARAMS=(
     ${SOOS_AUTH_DELAY_TIME:+--authDelayTime "${SOOS_AUTH_DELAY_TIME}"}
     ${SOOS_AUTH_VERIFICATION_URL:+--authVerificationURL "${SOOS_AUTH_VERIFICATION_URL}"}
     ${SOOS_DISABLE_RULES:+--disableRules "${SOOS_DISABLE_RULES}"}
-    ${SOOS_OTHER_OPTIONS:+--otherOptions "${SOOS_OTHER_OPTIONS}"}
+    ${SOOS_OTHER_OPTIONS:+--otherOptions "\"${SOOS_OTHER_OPTIONS}\""}
 )
 
 [ "$SOOS_DEBUG" == "true" ] && PARAMS+=("--debug")
