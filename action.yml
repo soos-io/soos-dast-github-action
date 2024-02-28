@@ -2,8 +2,8 @@ name: 'SOOS DAST'
 author: 'SOOS'
 description: 'The SOOS GitHub Action to perform the DAST Analysis.'
 branding:
-  icon: "alert-triangle"
-  color: "blue"
+  icon: 'alert-triangle'
+  color: 'blue'
 inputs:
   client_id:
     description: 'SOOS Client Id.'
@@ -20,7 +20,7 @@ inputs:
     required: true
     default: 'baseline'
   on_failure:
-    description: "Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure (Default)"
+    description: 'Action to perform when the scan fails. Values available: fail_the_build, continue_on_failure (Default)'
     required: false
     default: 'continue_on_failure'
   api_url:
@@ -84,7 +84,7 @@ inputs:
   request_cookies:
     description: 'Set Cookie values for the requests to the target URL.'
     required: false
-  request_header:
+  request_headers:
     description: 'Set extra header requests.'
     required: false
   bearer_token:
@@ -95,9 +95,9 @@ inputs:
     required: false
   auth_password:
     description: 'Password to use in auth apps.'
-    required: false    
+    required: false
   auth_login_url:
-    description: 'Login url to use in auth apps.' 
+    description: 'Login url to use in auth apps.'
     required: false
   auth_username_field:
     description: 'Username input id to use in auth apps.'
@@ -117,7 +117,7 @@ inputs:
   auth_delay_time:
     description: 'Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page)'
     required: false
-  auth_submit_action: 
+  auth_submit_action:
     description: 'Submit action to perform on form filled. Possible values are click or submit.'
     required: false
   oauth_token_url:
@@ -129,9 +129,9 @@ inputs:
   auth_verification_url:
     description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
     required: false
-  verbose: 
-   description: 'Enable verbose logging.'
-   required: false
+  verbose:
+    description: 'Enable verbose logging.'
+    required: false
   other_options:
     description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
@@ -153,6 +153,7 @@ runs:
     SOOS_AUTH_SUBMIT_FIELD: ${{ inputs.auth_submit_field }}
     SOOS_AUTH_USERNAME: ${{ inputs.auth_username }}
     SOOS_AUTH_USERNAME_FIELD: ${{ inputs.auth_username_field }}
+    SOOS_AUTH_VERIFICATION_URL: ${{ inputs.auth_verification_url }}
     SOOS_BEARER_TOKEN: ${{ inputs.bearer_token }}
     SOOS_BRANCH_NAME: ${{ inputs.branch_name }}
     SOOS_BRANCH_URI: ${{ inputs.branch_uri }}
@@ -173,7 +174,7 @@ runs:
     SOOS_OUTPUT_FORMAT: ${{ inputs.output_format }}
     SOOS_PROJECT_NAME: ${{ inputs.project_name }}
     SOOS_REQUEST_COOKIES: ${{ inputs.request_cookies }}
-    SOOS_REQUEST_HEADER: ${{ inputs.request_header }}
+    SOOS_REQUEST_HEADERS: ${{ inputs.request_headers }}
     SOOS_SCAN_MODE: ${{ inputs.scan_mode }}
     SOOS_TARGET_URL: ${{ inputs.target_url }}
     SOOS_VERBOSE: ${{ inputs.verbose }}
