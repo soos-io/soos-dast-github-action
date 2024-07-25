@@ -141,7 +141,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'docker://soosio/dast-github:${{ inputs.image_tag }}'
+  image: docker://soosio/dast-github:beta
   env:
     SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
     SOOS_API_KEY: ${{ inputs.api_key }}
