@@ -5,6 +5,10 @@ branding:
   icon: 'alert-triangle'
   color: 'blue'
 inputs:
+  image_tag:
+    description: 'The default soosio/dast docker image tag to use as a base image'
+    required: false
+    default: 'latest'
   client_id:
     description: 'SOOS Client Id.'
     required: true
@@ -138,6 +142,8 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - IMAGE_TAG=${{ inputs.image_tag }}
   env:
     SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
     SOOS_API_KEY: ${{ inputs.api_key }}

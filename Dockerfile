@@ -1,5 +1,5 @@
-FROM soosio/dast:latest
-
+ARG IMAGE_TAG=latest
+FROM soosio/dast:$IMAGE_TAG
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 USER root
