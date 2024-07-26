@@ -4,6 +4,14 @@ description: 'The SOOS GitHub Action to perform the DAST Analysis.'
 branding:
   icon: 'alert-triangle'
   color: 'blue'
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: 'Image tag to use, defaults to latest'
+        type: string
+        required: false
+        default: 'latest'
 inputs:
   client_id:
     description: 'SOOS Client Id.'
@@ -137,7 +145,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: docker://soosio/dast-github:latest
+  image: 'docker://soosio/dast-github:${{ github.event.inputs.image_tag }}'
   env:
     SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
     SOOS_API_KEY: ${{ inputs.api_key }}
