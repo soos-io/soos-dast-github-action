@@ -219,6 +219,4 @@ runs:
     - name: Run SOOS DAST
       uses: docker://soosio/dast:latest
       with:
-        entrypoint: 'node --no-deprecation dist/index.js $args'
-      env:
         args: ${{ env.args }}
