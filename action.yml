@@ -145,7 +145,7 @@ runs:
     - name: Check version
       shell: bash
       env:
-        TEST_GHAR: ${{ github.action_ref }}
+        SOOS_ACTION_REF: ${{ github.action_ref }}
       run: |
         printf '%.0s-' {1..80}
         printenv
@@ -153,7 +153,7 @@ runs:
         response=$(curl -s https://api.github.com/repos/soos-io/soos-dast-github-action/releases/latest)
         if [ $? -eq 0 ]; then
           latest_tag=$(echo "$response" | grep -oP '"tag_name": "\K(.*)(?=")')
-          current_tag=$(echo "$GITHUB_ACTION_REF" | awk -F'/' '{print $NF}')
+          current_tag=$(echo "$SOOS_ACTION_REF" | awk -F'/' '{print $NF}')
           latest_tag_major=$(echo "$latest_tag" | awk -F'.' '{print $1}')
           
           echo "Your current version is: $current_tag, The latest version is: $latest_tag_major"
