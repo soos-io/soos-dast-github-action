@@ -163,54 +163,10 @@ runs:
         else 
           echo "Can't check version."
         fi
-
-    - name: Run beta
-      if: ${{ inputs.image_tag }} == 'beta'
-      uses: docker://soosio/dast-github:beta
-      with:
-        entrypoint: /entrypoint.sh
       env:
-        SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
-        SOOS_API_KEY: ${{ inputs.api_key }}
-        SOOS_API_SCAN_FORMAT: ${{ inputs.api_scan_format }}
-        SOOS_API_URL: ${{ inputs.api_url }}
-        SOOS_AUTH_DELAY_TIME: ${{ inputs.auth_delay_time }}
-        SOOS_AUTH_FORM_TYPE: ${{ inputs.auth_form_type }}
-        SOOS_AUTH_LOGIN_URL: ${{ inputs.auth_login_url }}
-        SOOS_AUTH_PASSWORD: ${{ inputs.auth_password }}
-        SOOS_AUTH_PASSWORD_FIELD: ${{ inputs.auth_password_field }}
-        SOOS_AUTH_SECOND_SUBMIT_FIELD: ${{ inputs.auth_second_submit_field }}
-        SOOS_AUTH_SUBMIT_ACTION: ${{ inputs.auth_submit_action }}
-        SOOS_AUTH_SUBMIT_FIELD: ${{ inputs.auth_submit_field }}
-        SOOS_AUTH_USERNAME: ${{ inputs.auth_username }}
-        SOOS_AUTH_USERNAME_FIELD: ${{ inputs.auth_username_field }}
-        SOOS_AUTH_VERIFICATION_URL: ${{ inputs.auth_verification_url }}
-        SOOS_BEARER_TOKEN: ${{ inputs.bearer_token }}
-        SOOS_BRANCH_NAME: ${{ inputs.branch_name }}
-        SOOS_BRANCH_URI: ${{ inputs.branch_uri }}
-        SOOS_BUILD_URI: ${{ inputs.build_uri }}
-        SOOS_BUILD_VERSION: ${{ inputs.build_version }}
-        SOOS_CLIENT_ID: ${{ inputs.client_id }}
-        SOOS_CONTEXT_FILE: ${{ inputs.context_file }}
-        SOOS_CONTEXT_USER: ${{ inputs.context_user }}
-        SOOS_DEBUG: ${{ inputs.debug }}
-        SOOS_DISABLE_RULES: ${{ inputs.disable_rules }}
-        SOOS_FULL_SCAN_MINUTES: ${{ inputs.full_scan_minutes }}
-        SOOS_LOG_LEVEL: ${{ inputs.log_level }}
-        SOOS_OAUTH_PARAMETERS: ${{ inputs.oauth_parameters }}
-        SOOS_OAUTH_TOKEN_URL: ${{ inputs.oauth_token_url }}
-        SOOS_ON_FAILURE: ${{ inputs.on_failure }}
-        SOOS_OPERATING_ENVIRONMENT: ${{ inputs.operating_environment }}
-        SOOS_OTHER_OPTIONS: ${{ inputs.other_options }}
-        SOOS_OUTPUT_FORMAT: ${{ inputs.output_format }}
-        SOOS_PROJECT_NAME: ${{ inputs.project_name }}
-        SOOS_REQUEST_COOKIES: ${{ inputs.request_cookies }}
-        SOOS_REQUEST_HEADERS: ${{ inputs.request_headers }}
-        SOOS_SCAN_MODE: ${{ inputs.scan_mode }}
-        SOOS_TARGET_URL: ${{ inputs.target_url }}
-        SOOS_VERBOSE: ${{ inputs.verbose }}
-        SOOS_ZAP_OPTIONS: ${{ inputs.zap_options }}
-    - name: Run latest
+        GITHUB_ACTION_REF: ${{ github.ref }}
+
+    - name: Run SOOS DAST
       if: ${{ inputs.image_tag }} == 'latest'
       uses: docker://soosio/dast-github:latest
       with:
