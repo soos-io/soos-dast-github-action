@@ -147,6 +147,7 @@ runs:
       env:
         SOOS_ACTION_REF: ${{ github.action_ref }}
       run: |
+        set +x  # Turn off command echoing
         printf '%.0s-' {1..80}
         printf '\n'
         response=$(curl -s https://api.github.com/repos/soos-io/soos-dast-github-action/releases/latest)
@@ -173,6 +174,7 @@ runs:
     - name: Set Arguments
       shell: bash
       run: |
+        set +x  # Turn off command echoing
         args=""
 
         [ -n "${{ inputs.ajax_spider }}" ] && args+="--ajaxSpider=${{ inputs.ajax_spider }} "
@@ -212,9 +214,10 @@ runs:
         [ -n "${{ inputs.request_cookies }}" ] && args+="--requestCookies=${{ inputs.request_cookies }} "
         [ -n "${{ inputs.request_headers }}" ] && args+="--requestHeaders=${{ inputs.request_headers }} "
         [ -n "${{ inputs.scan_mode }}" ] && args+="--scanMode=${{ inputs.scan_mode }} "
-        [ -n "${{ inputs.target_url }}" ] && args+="--targetUrl=${{ inputs.target_url }} "
         [ -n "${{ inputs.verbose }}" ] && args+="--verbose=${{ inputs.verbose }} "
         [ -n "${{ inputs.zap_options }}" ] && args+="--zapOptions=${{ inputs.zap_options }} "
+
+        [ -n "${{ inputs.target_url }}" ] && args+=" ${{ inputs.target_url }}"
 
         echo "Arguments: $args"
 
