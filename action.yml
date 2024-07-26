@@ -160,7 +160,7 @@ runs:
           elif [[ "$current_tag" != "$latest_tag_major" ]]; then
             echo "This action is out of date. It is recommended to use the major version tag, $latest_tag_major."
           fi
-        elif 
+        else 
           echo "Can't check version."
         fi
 
