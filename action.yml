@@ -177,7 +177,7 @@ runs:
         set +x  # Turn off command echoing
         args=""
 
-        [ -n "${{ inputs.ajax_spider }}" ] && args+="--ajaxSpider=${{ inputs.ajax_spider }} "
+        [ -n "${{ inputs.ajax_spider }}" == "true" ] && args+="--ajaxSpider "
         [ -n "${{ inputs.api_key }}" ] && args+="--apiKey=${{ inputs.api_key }} "
         [ -n "${{ inputs.api_scan_format }}" ] && args+="--apiScanFormat=${{ inputs.api_scan_format }} "
         [ -n "${{ inputs.api_url }}" ] && args+="--apiUrl=${{ inputs.api_url }} "
@@ -200,8 +200,8 @@ runs:
         [ -n "${{ inputs.client_id }}" ] && args+="--clientId=${{ inputs.client_id }} "
         [ -n "${{ inputs.context_file }}" ] && args+="--contextFile=${{ inputs.context_file }} "
         [ -n "${{ inputs.context_user }}" ] && args+="--contextUser=${{ inputs.context_user }} "
-        [ -n "${{ inputs.debug }}" ] && args+="--debug=${{ inputs.debug }} "
-        [ -n "${{ inputs.disable_rules }}" ] && args+="--disableRules=${{ inputs.disable_rules }} "
+        [ -n "${{ inputs.debug }}" == "true" ] && args+="--debug "
+        [ -n "${{ inputs.disable_rules }}" == "true" ] && args+="--disableRules "
         [ -n "${{ inputs.full_scan_minutes }}" ] && args+="--fullScanMinutes=${{ inputs.full_scan_minutes }} "
         [ -n "${{ inputs.log_level }}" ] && args+="--logLevel=${{ inputs.log_level }} "
         [ -n "${{ inputs.oauth_parameters }}" ] && args+="--oauthParameters=${{ inputs.oauth_parameters }} "
@@ -214,7 +214,7 @@ runs:
         [ -n "${{ inputs.request_cookies }}" ] && args+="--requestCookies=${{ inputs.request_cookies }} "
         [ -n "${{ inputs.request_headers }}" ] && args+="--requestHeaders=${{ inputs.request_headers }} "
         [ -n "${{ inputs.scan_mode }}" ] && args+="--scanMode=${{ inputs.scan_mode }} "
-        [ -n "${{ inputs.verbose }}" ] && args+="--verbose=${{ inputs.verbose }} "
+        [ -n "${{ inputs.verbose }}" == "true" ] && args+="--verbose "
         [ -n "${{ inputs.zap_options }}" ] && args+="--zapOptions=${{ inputs.zap_options }} "
 
         [ -n "${{ inputs.target_url }}" ] && args+=" ${{ inputs.target_url }}"
