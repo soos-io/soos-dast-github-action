@@ -135,6 +135,10 @@ inputs:
   other_options:
     description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
+  image_tag:
+    description: 'The soos/dast image tag to use; defaults to latest'
+    required: false
+    default: 'latest'
 runs:
   using: "composite"
   steps:
@@ -219,5 +223,5 @@ runs:
     - name: Run SOOS DAST
       shell: bash
       run: |
-        docker pull soosio/dast:latest
-        docker run -it --rm soosio/dast:latest $args
+        docker pull soosio/dast:${{ inputs.image_tag }}
+        docker run --rm soosio/dast:${{ inputs.image_tag }} $args
