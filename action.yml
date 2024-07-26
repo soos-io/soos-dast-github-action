@@ -144,6 +144,8 @@ runs:
   steps:
     - name: Check version
       shell: bash
+      env:
+        TEST_GHAR: ${{ github.action_ref }}
       run: |
         printf '%.0s-' {1..80}
         printenv
