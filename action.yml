@@ -5,12 +5,8 @@ branding:
   icon: 'alert-triangle'
   color: 'blue'
 inputs:
-  image_tag:
-    description: 'soosio/dast image tag to use, defaults to latest'
-    required: false
-    default: 'latest'
   client_id:
-    description: 'SOOS Client Id.'
+    description: 'SOOS Client ID.'
     required: true
   api_key:
     description: 'SOOS API Key.'
@@ -170,49 +166,59 @@ runs:
         printf '%.0s-' {1..80}
         printf '\n'
 
+    - name: Set Arguments
+        shell: bash
+        run: |
+          args=""
+
+          [ -n "${{ inputs.ajax_spider }}" ] && args+="--ajaxSpider=${{ inputs.ajax_spider }} "
+          [ -n "${{ inputs.api_key }}" ] && args+="--apiKey=${{ inputs.api_key }} "
+          [ -n "${{ inputs.api_scan_format }}" ] && args+="--apiScanFormat=${{ inputs.api_scan_format }} "
+          [ -n "${{ inputs.api_url }}" ] && args+="--apiUrl=${{ inputs.api_url }} "
+          [ -n "${{ inputs.auth_delay_time }}" ] && args+="--authDelayTime=${{ inputs.auth_delay_time }} "
+          [ -n "${{ inputs.auth_form_type }}" ] && args+="--authFormType=${{ inputs.auth_form_type }} "
+          [ -n "${{ inputs.auth_login_url }}" ] && args+="--authLoginUrl=${{ inputs.auth_login_url }} "
+          [ -n "${{ inputs.auth_password }}" ] && args+="--authPassword=${{ inputs.auth_password }} "
+          [ -n "${{ inputs.auth_password_field }}" ] && args+="--authPasswordField=${{ inputs.auth_password_field }} "
+          [ -n "${{ inputs.auth_second_submit_field }}" ] && args+="--authSecondSubmitField=${{ inputs.auth_second_submit_field }} "
+          [ -n "${{ inputs.auth_submit_action }}" ] && args+="--authSubmitAction=${{ inputs.auth_submit_action }} "
+          [ -n "${{ inputs.auth_submit_field }}" ] && args+="--authSubmitField=${{ inputs.auth_submit_field }} "
+          [ -n "${{ inputs.auth_username }}" ] && args+="--authUsername=${{ inputs.auth_username }} "
+          [ -n "${{ inputs.auth_username_field }}" ] && args+="--authUsernameField=${{ inputs.auth_username_field }} "
+          [ -n "${{ inputs.auth_verification_url }}" ] && args+="--authVerificationUrl=${{ inputs.auth_verification_url }} "
+          [ -n "${{ inputs.bearer_token }}" ] && args+="--bearerToken=${{ inputs.bearer_token }} "
+          [ -n "${{ inputs.branch_name }}" ] && args+="--branchName=${{ inputs.branch_name }} "
+          [ -n "${{ inputs.branch_uri }}" ] && args+="--branchUri=${{ inputs.branch_uri }} "
+          [ -n "${{ inputs.build_uri }}" ] && args+="--buildUri=${{ inputs.build_uri }} "
+          [ -n "${{ inputs.build_version }}" ] && args+="--buildVersion=${{ inputs.build_version }} "
+          [ -n "${{ inputs.client_id }}" ] && args+="--clientId=${{ inputs.client_id }} "
+          [ -n "${{ inputs.context_file }}" ] && args+="--contextFile=${{ inputs.context_file }} "
+          [ -n "${{ inputs.context_user }}" ] && args+="--contextUser=${{ inputs.context_user }} "
+          [ -n "${{ inputs.debug }}" ] && args+="--debug=${{ inputs.debug }} "
+          [ -n "${{ inputs.disable_rules }}" ] && args+="--disableRules=${{ inputs.disable_rules }} "
+          [ -n "${{ inputs.full_scan_minutes }}" ] && args+="--fullScanMinutes=${{ inputs.full_scan_minutes }} "
+          [ -n "${{ inputs.log_level }}" ] && args+="--logLevel=${{ inputs.log_level }} "
+          [ -n "${{ inputs.oauth_parameters }}" ] && args+="--oauthParameters=${{ inputs.oauth_parameters }} "
+          [ -n "${{ inputs.oauth_token_url }}" ] && args+="--oauthTokenUrl=${{ inputs.oauth_token_url }} "
+          [ -n "${{ inputs.on_failure }}" ] && args+="--onFailure=${{ inputs.on_failure }} "
+          [ -n "${{ inputs.operating_environment }}" ] && args+="--operatingEnvironment=${{ inputs.operating_environment }} "
+          [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=${{ inputs.other_options }} "
+          [ -n "${{ inputs.output_format }}" ] && args+="--outputFormat=${{ inputs.output_format }} "
+          [ -n "${{ inputs.project_name }}" ] && args+="--projectName=${{ inputs.project_name }} "
+          [ -n "${{ inputs.request_cookies }}" ] && args+="--requestCookies=${{ inputs.request_cookies }} "
+          [ -n "${{ inputs.request_headers }}" ] && args+="--requestHeaders=${{ inputs.request_headers }} "
+          [ -n "${{ inputs.scan_mode }}" ] && args+="--scanMode=${{ inputs.scan_mode }} "
+          [ -n "${{ inputs.target_url }}" ] && args+="--targetUrl=${{ inputs.target_url }} "
+          [ -n "${{ inputs.verbose }}" ] && args+="--verbose=${{ inputs.verbose }} "
+          [ -n "${{ inputs.zap_options }}" ] && args+="--zapOptions=${{ inputs.zap_options }} "
+
+          echo "Arguments: $args"
+
+          echo "args=$args" >> $GITHUB_ENV
+
     - name: Run SOOS DAST
-      if: ${{ inputs.image_tag }} == 'latest'
-      uses: docker://soosio/dast-github:latest
+      uses: docker://soosio/dast:latest
       with:
-        entrypoint: /entrypoint.sh
+        entrypoint: 'node --no-deprecation dist/index.js $args'
       env:
-        SOOS_AJAX_SPIDER: ${{ inputs.ajax_spider }}
-        SOOS_API_KEY: ${{ inputs.api_key }}
-        SOOS_API_SCAN_FORMAT: ${{ inputs.api_scan_format }}
-        SOOS_API_URL: ${{ inputs.api_url }}
-        SOOS_AUTH_DELAY_TIME: ${{ inputs.auth_delay_time }}
-        SOOS_AUTH_FORM_TYPE: ${{ inputs.auth_form_type }}
-        SOOS_AUTH_LOGIN_URL: ${{ inputs.auth_login_url }}
-        SOOS_AUTH_PASSWORD: ${{ inputs.auth_password }}
-        SOOS_AUTH_PASSWORD_FIELD: ${{ inputs.auth_password_field }}
-        SOOS_AUTH_SECOND_SUBMIT_FIELD: ${{ inputs.auth_second_submit_field }}
-        SOOS_AUTH_SUBMIT_ACTION: ${{ inputs.auth_submit_action }}
-        SOOS_AUTH_SUBMIT_FIELD: ${{ inputs.auth_submit_field }}
-        SOOS_AUTH_USERNAME: ${{ inputs.auth_username }}
-        SOOS_AUTH_USERNAME_FIELD: ${{ inputs.auth_username_field }}
-        SOOS_AUTH_VERIFICATION_URL: ${{ inputs.auth_verification_url }}
-        SOOS_BEARER_TOKEN: ${{ inputs.bearer_token }}
-        SOOS_BRANCH_NAME: ${{ inputs.branch_name }}
-        SOOS_BRANCH_URI: ${{ inputs.branch_uri }}
-        SOOS_BUILD_URI: ${{ inputs.build_uri }}
-        SOOS_BUILD_VERSION: ${{ inputs.build_version }}
-        SOOS_CLIENT_ID: ${{ inputs.client_id }}
-        SOOS_CONTEXT_FILE: ${{ inputs.context_file }}
-        SOOS_CONTEXT_USER: ${{ inputs.context_user }}
-        SOOS_DEBUG: ${{ inputs.debug }}
-        SOOS_DISABLE_RULES: ${{ inputs.disable_rules }}
-        SOOS_FULL_SCAN_MINUTES: ${{ inputs.full_scan_minutes }}
-        SOOS_LOG_LEVEL: ${{ inputs.log_level }}
-        SOOS_OAUTH_PARAMETERS: ${{ inputs.oauth_parameters }}
-        SOOS_OAUTH_TOKEN_URL: ${{ inputs.oauth_token_url }}
-        SOOS_ON_FAILURE: ${{ inputs.on_failure }}
-        SOOS_OPERATING_ENVIRONMENT: ${{ inputs.operating_environment }}
-        SOOS_OTHER_OPTIONS: ${{ inputs.other_options }}
-        SOOS_OUTPUT_FORMAT: ${{ inputs.output_format }}
-        SOOS_PROJECT_NAME: ${{ inputs.project_name }}
-        SOOS_REQUEST_COOKIES: ${{ inputs.request_cookies }}
-        SOOS_REQUEST_HEADERS: ${{ inputs.request_headers }}
-        SOOS_SCAN_MODE: ${{ inputs.scan_mode }}
-        SOOS_TARGET_URL: ${{ inputs.target_url }}
-        SOOS_VERBOSE: ${{ inputs.verbose }}
-        SOOS_ZAP_OPTIONS: ${{ inputs.zap_options }}
+        args: ${{ env.args }}
