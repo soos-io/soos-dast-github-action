@@ -143,6 +143,7 @@ runs:
   using: "composite"
   steps:
     - name: Check version
+      shell: bash
       run: ./check_version.sh
     - name: Run beta
       if: ${{ inputs.image_tag }} == 'beta'
