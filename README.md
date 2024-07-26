@@ -197,7 +197,7 @@ jobs:
 
 
 ## References
- - [soosio/dast-github on Docker hub](https://hub.docker.com/r/soosio/dast-github)
+ - [soosio/dast on Docker hub](https://hub.docker.com/r/soosio/dast)
  - [ZAP](https://www.zaproxy.org/)
 
 
