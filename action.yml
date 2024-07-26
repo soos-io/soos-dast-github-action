@@ -180,7 +180,7 @@ runs:
         [ -n "${{ inputs.ajax_spider }}" == "true" ] && args+="--ajaxSpider "
         [ -n "${{ inputs.api_key }}" ] && args+="--apiKey=${{ inputs.api_key }} "
         [ -n "${{ inputs.api_scan_format }}" ] && args+="--apiScanFormat=${{ inputs.api_scan_format }} "
-        [ -n "${{ inputs.api_url }}" ] && args+="--apiUrl=${{ inputs.api_url }} "
+        [ -n "${{ inputs.api_url }}" ] && args+="--apiURL=${{ inputs.api_url }} "
         [ -n "${{ inputs.auth_delay_time }}" ] && args+="--authDelayTime=${{ inputs.auth_delay_time }} "
         [ -n "${{ inputs.auth_form_type }}" ] && args+="--authFormType=${{ inputs.auth_form_type }} "
         [ -n "${{ inputs.auth_login_url }}" ] && args+="--authLoginUrl=${{ inputs.auth_login_url }} "
