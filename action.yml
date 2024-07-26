@@ -217,6 +217,7 @@ runs:
         echo "args=$args" >> $GITHUB_ENV
 
     - name: Run SOOS DAST
+      shell: bash
       run: |
         docker pull soosio/dast:latest
         docker run -it --rm soosio/dast:latest $args
