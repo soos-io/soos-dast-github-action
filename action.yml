@@ -145,6 +145,9 @@ runs:
     - name: Check version
       shell: bash
       run: |
+        printf '%.0s-' {1..80}
+        printenv
+        printf '%.0s-' {1..80}
         response=$(curl -s https://api.github.com/repos/soos-io/soos-dast-github-action/releases/latest)
         if [ $? -eq 0 ]; then
           latest_tag=$(echo "$response" | grep -oP '"tag_name": "\K(.*)(?=")')
@@ -163,8 +166,7 @@ runs:
         else 
           echo "Can't check version."
         fi
-      env:
-        GITHUB_ACTION_REF: ${{ github.ref }}
+        printf '%.0s-' {1..80}
 
     - name: Run SOOS DAST
       if: ${{ inputs.image_tag }} == 'latest'
