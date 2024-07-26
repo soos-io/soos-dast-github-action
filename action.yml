@@ -142,6 +142,8 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Check version
+      run: ./check_version.sh
     - name: Run beta
       if: ${{ inputs.image_tag }} == 'beta'
       uses: docker://soosio/dast-github:beta
