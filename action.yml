@@ -224,4 +224,4 @@ runs:
       run: |
         echo "args: $args"
         docker pull soosio/dast:${{ inputs.image_tag }}
-        docker run --rm soosio/dast:${{ inputs.image_tag }} $(echo $args)
+        eval "docker run --rm soosio/dast:${{ inputs.image_tag }} $args"
