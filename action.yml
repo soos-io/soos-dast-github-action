@@ -205,7 +205,7 @@ runs:
         [ -n "${{ inputs.oauth_token_url }}" ] && args+="--oauthTokenUrl=${{ inputs.oauth_token_url }} "
         [ -n "${{ inputs.on_failure }}" ] && args+="--onFailure=${{ inputs.on_failure }} "
         [ -n "${{ inputs.operating_environment }}" ] && args+="--operatingEnvironment=${{ inputs.operating_environment }} "
-        [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\\"${{ inputs.other_options }}\\" "
+        [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\\\"${{ inputs.other_options }}\\\" "
         [ -n "${{ inputs.output_format }}" ] && args+="--outputFormat=${{ inputs.output_format }} "
         [ -n "${{ inputs.project_name }}" ] && args+="--projectName=${{ inputs.project_name }} "
         [ -n "${{ inputs.request_cookies }}" ] && args+="--requestCookies=${{ inputs.request_cookies }} "
