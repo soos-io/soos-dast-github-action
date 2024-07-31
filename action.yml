@@ -222,6 +222,5 @@ runs:
     - name: Run SOOS DAST
       shell: bash
       run: |
-        echo "args: $args"
         docker pull soosio/dast:${{ inputs.image_tag }}
         eval "docker run --rm soosio/dast:${{ inputs.image_tag }} $args"
