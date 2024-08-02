@@ -180,7 +180,7 @@ runs:
         [ -n "${{ inputs.api_url }}" ] && args+="--apiURL=${{ inputs.api_url }} "
         [ -n "${{ inputs.auth_delay_time }}" ] && args+="--authDelayTime=${{ inputs.auth_delay_time }} "
         [ -n "${{ inputs.auth_form_type }}" ] && args+="--authFormType=${{ inputs.auth_form_type }} "
-        [ -n "${{ inputs.auth_login_url }}" ] && args+="--authLoginURL=${{ inputs.auth_login_url }} "
+        [ -n "${{ inputs.auth_login_url }}" ] && args+="--authLoginURL=\"${{ inputs.auth_login_url }}\" "
         [ -n "${{ inputs.auth_password }}" ] && args+="--authPassword=${{ inputs.auth_password }} "
         [ -n "${{ inputs.auth_password_field }}" ] && args+="--authPasswordField=${{ inputs.auth_password_field }} "
         [ -n "${{ inputs.auth_second_submit_field }}" ] && args+="--authSecondSubmitField=${{ inputs.auth_second_submit_field }} "
