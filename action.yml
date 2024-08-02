@@ -188,7 +188,7 @@ runs:
         [ -n "${{ inputs.auth_submit_field }}" ] && args+="--authSubmitField=${{ inputs.auth_submit_field }} "
         [ -n "${{ inputs.auth_username }}" ] && args+="--authUsername=${{ inputs.auth_username }} "
         [ -n "${{ inputs.auth_username_field }}" ] && args+="--authUsernameField=${{ inputs.auth_username_field }} "
-        [ -n "${{ inputs.auth_verification_url }}" ] && args+="--authVerificationUrl=${{ inputs.auth_verification_url }} "
+        [ -n "${{ inputs.auth_verification_url }}" ] && args+="--authVerificationURL=${{ inputs.auth_verification_url }} "
         [ -n "${{ inputs.bearer_token }}" ] && args+="--bearerToken=${{ inputs.bearer_token }} "
         [ -n "${{ inputs.branch_name }}" ] && args+="--branchName=${{ inputs.branch_name }} "
         [ -n "${{ inputs.branch_uri }}" ] && args+="--branchUri=${{ inputs.branch_uri }} "
