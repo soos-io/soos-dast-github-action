@@ -172,7 +172,7 @@ runs:
       shell: bash
       run: |
         set +x  # Turn off command echoing
-        args=""
+        args="--integrationName=Github --integrationType=Plugin "
 
         [[ "${{ inputs.ajax_spider }}" == "true" ]] && args+="--ajaxSpider "
         [ -n "${{ inputs.api_key }}" ] && args+="--apiKey=${{ inputs.api_key }} "
