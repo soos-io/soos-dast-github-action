@@ -172,7 +172,7 @@ runs:
       shell: bash
       run: |
         set +x  # Turn off command echoing
-        args="--checkoutDir ${{ github.workspace }} --integrationName=Github --integrationType=Plugin "
+        args="--checkoutDir /zap/wrk --integrationName=Github --integrationType=Plugin "
 
         [[ "${{ inputs.ajax_spider }}" == "true" ]] && args+="--ajaxSpider "
         [ -n "${{ inputs.api_key }}" ] && args+="--apiKey=${{ inputs.api_key }} "
@@ -223,4 +223,4 @@ runs:
       shell: bash
       run: |
         docker pull soosio/dast:${{ inputs.image_tag }}
-        eval "docker run --rm soosio/dast:${{ inputs.image_tag }} $args"
+        eval "docker run -v ${{ github.workspace }}:/zap/wrk/:rw --rm soosio/dast:${{ inputs.image_tag }} $args"
