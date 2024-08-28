@@ -114,20 +114,20 @@ inputs:
   auth_submit_action:
     description: 'Submit action to perform on form filled. Possible values are click or submit.'
     required: false
+  auth_verification_url:
+    description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
+    required: false
   oauth_token_url:
     description: 'The fully qualified authentication URL that grants the access_token.'
     required: false
   oauth_parameters:
     description: 'Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).'
     required: false
-  auth_verification_url:
-    description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
+  other_options:
+    description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
   verbose:
     description: 'DEPRECATED - parameter has no effect. Set log_level to DEBUG for the same effect.'
-    required: false
-  other_options:
-    description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
   image_tag:
     description: 'The soos/dast image tag to use; defaults to latest'
