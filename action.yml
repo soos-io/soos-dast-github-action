@@ -124,7 +124,7 @@ inputs:
     description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
     required: false
   verbose:
-    description: 'Enable verbose logging.'
+    description: 'DEPRECATED - parameter has no effect. Set log_level to DEBUG for the same effect.'
     required: false
   other_options:
     description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
@@ -207,7 +207,6 @@ runs:
         [ -n "${{ inputs.project_name }}" ] && args+="--projectName=\"${{ inputs.project_name }}\" "
         [ -n "${{ inputs.request_headers }}" ] && args+="--requestHeaders=\"${{ inputs.request_headers }}\" "
         [ -n "${{ inputs.scan_mode }}" ] && args+="--scanMode=${{ inputs.scan_mode }} "
-        [[ "${{ inputs.verbose }}" == "true" ]] && args+="--verbose "
 
         [ -n "${{ inputs.target_url }}" ] && args+="${{ inputs.target_url }}"
 
