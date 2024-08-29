@@ -75,7 +75,7 @@ inputs:
     required: false
     default: ${{ runner.os }}
   output_format:
-    description: 'Output format for report to be generated (only sarif supported at the moment).'
+    description: 'Output format for report to be generated (only SARIF supported at the moment).'
     required: false
     default: ''
   request_headers:
@@ -130,7 +130,7 @@ inputs:
     description: 'DEPRECATED - parameter has no effect. Set log_level to DEBUG for the same effect.'
     required: false
   image_tag:
-    description: 'The soos/dast image tag to use; defaults to latest'
+    description: 'The soosio/dast image tag to use; defaults to latest'
     required: false
     default: 'latest'
 runs:
