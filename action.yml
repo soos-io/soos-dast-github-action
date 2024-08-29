@@ -57,11 +57,11 @@ inputs:
   branch_uri:
     description: 'URI to branch from SCM system.'
     required: false
-    default: '${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref_name }}'
+    default: '${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref }}'
   branch_name:
     description: 'Branch Name to create scan under'
     required: false
-    default: '${{ github.ref_name }}'
+    default: '${{ github.ref }}'
   build_version:
     description: 'Version of application build artifacts.'
     required: false
