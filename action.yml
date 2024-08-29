@@ -75,12 +75,9 @@ inputs:
     required: false
     default: ${{ runner.os }}
   output_format:
-    description: 'Output format for report to be generated (only sarif supported at the moment).'
+    description: 'Output format for report to be generated (only SARIF supported at the moment).'
     required: false
     default: ''
-  request_cookies:
-    description: 'Set Cookie values for the requests to the target URL.'
-    required: false
   request_headers:
     description: 'Set extra header requests.'
     required: false
@@ -117,23 +114,23 @@ inputs:
   auth_submit_action:
     description: 'Submit action to perform on form filled. Possible values are click or submit.'
     required: false
+  auth_verification_url:
+    description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
+    required: false
   oauth_token_url:
     description: 'The fully qualified authentication URL that grants the access_token.'
     required: false
   oauth_parameters:
     description: 'Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).'
     required: false
-  auth_verification_url:
-    description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
-    required: false
-  verbose:
-    description: 'Enable verbose logging.'
-    required: false
   other_options:
     description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
+  verbose:
+    description: 'DEPRECATED - parameter has no effect. Set log_level to DEBUG for the same effect.'
+    required: false
   image_tag:
-    description: 'The soos/dast image tag to use; defaults to latest'
+    description: 'The soosio/dast image tag to use; defaults to latest'
     required: false
     default: 'latest'
 runs:
@@ -172,7 +169,7 @@ runs:
       shell: bash
       run: |
         set +x  # Turn off command echoing
-        args="--checkoutDir /zap/wrk --integrationName=Github --integrationType=Plugin "
+        args="--integrationName=Github --integrationType=Plugin "
 
         [[ "${{ inputs.ajax_spider }}" == "true" ]] && args+="--ajaxSpider "
         [ -n "${{ inputs.api_key }}" ] && args+="--apiKey=${{ inputs.api_key }} "
@@ -208,10 +205,8 @@ runs:
         [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\"${{ inputs.other_options }}\" "
         [ -n "${{ inputs.output_format }}" ] && args+="--outputFormat=${{ inputs.output_format }} "
         [ -n "${{ inputs.project_name }}" ] && args+="--projectName=\"${{ inputs.project_name }}\" "
-        [ -n "${{ inputs.request_cookies }}" ] && args+="--requestCookies=\"${{ inputs.request_cookies }}\" "
         [ -n "${{ inputs.request_headers }}" ] && args+="--requestHeaders=\"${{ inputs.request_headers }}\" "
         [ -n "${{ inputs.scan_mode }}" ] && args+="--scanMode=${{ inputs.scan_mode }} "
-        [[ "${{ inputs.verbose }}" == "true" ]] && args+="--verbose "
 
         [ -n "${{ inputs.target_url }}" ] && args+="${{ inputs.target_url }}"
 

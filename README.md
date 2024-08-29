@@ -2,7 +2,7 @@
 
 SOOS is an independent software security company, located in Winooski, VT USA, building security software for your team. [SOOS, Software security, simplified](https://soos.io).
 
-Use SOOS to scan your software for [vulnerabilities](https://app.soos.io/research/vulnerabilities) and [open source license](https://app.soos.io/research/licenses) issues with [SOOS Core SCA](https://soos.io/products/sca). [Generate SBOMs](https://kb.soos.io/help/soos-reports-for-export). Govern your open source dependencies. Run the [SOOS DAST vulnerability scanner](https://soos.io/products/dast) against your web apps or APIs.
+Use SOOS to scan your software for [vulnerabilities](https://app.soos.io/research/vulnerabilities) and [open source license](https://app.soos.io/research/licenses) issues with [SOOS Core SCA](https://soos.io/products/sca). [Generate and ingest SBOMs](https://soos.io/products/sbom-manager). [Export reports](https://kb.soos.io/help/soos-reports-for-export) to industry standards. Govern your open source dependencies. Run the [SOOS DAST vulnerability scanner](https://soos.io/products/dast) against your web apps or APIs. [Scan your Docker containers](https://soos.io/products/containers) for vulnerabilities. Check your source code for issues with [SAST Analysis](https://soos.io/products/sast).
 
 [Demo SOOS](https://app.soos.io/demo) or [Register for a Free Trial](https://app.soos.io/register).
 
@@ -65,7 +65,6 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | output_format                            | [none]                      | Output in which the vulnerability report will be generated, only sarif is supported at the moment                       |                                                                                                                                                                          
 | zap_options                     | [none]                     | ZAP Additional Options.  
 | request_header                     | [none]                     | Set extra header requests.    
-| request_cookies                     | [none]                     | Set Cookie values for the requests to the target URL.    
 | bearer_token                     | [none]                     | Bearer token to include as authorization header in every request.    
 | auth_form_type                     | [none]                     | simple (all fields are displayed at once), wait_for_password (Password field is displayed only after username is filled), or multi_page (Password field is displayed only after username is filled and submit is clicked).  
 | auth_username                     | [none]                     | Username to use in auth apps.    
