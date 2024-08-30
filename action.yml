@@ -55,13 +55,13 @@ inputs:
     required: false
     default: 'INFO'
   branch_uri:
-    description: 'URI to branch from SCM system.'
+    description: 'Branch URI'
     required: false
-    default: '${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref }}'
+    default: '${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref_name }}'
   branch_name:
-    description: 'Branch Name to create scan under'
+    description: 'Branch Name'
     required: false
-    default: '${{ github.ref }}'
+    default: '${{ github.ref_name }}'
   build_version:
     description: 'Version of application build artifacts.'
     required: false
