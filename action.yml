@@ -170,7 +170,7 @@ runs:
       run: |
         set +x  # Turn off command echoing
         if [ "${{ inputs.verbose }}" == "true" ]; then
-            echo "Warning: --verbose is deprecated. Set log_level to DEBUG for the same effect."
+            echo "Warning: verbose is deprecated. Set log_level to DEBUG for the same effect."
 
     - name: Set Arguments
       shell: bash
