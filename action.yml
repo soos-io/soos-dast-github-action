@@ -165,6 +165,13 @@ runs:
         printf '%.0s-' {1..80}
         printf '\n'
 
+    - name: Check Deprecated Arguments
+      shell: bash
+      run: |
+        set +x  # Turn off command echoing
+        if [ "${{ inputs.verbose }}" == "true" ]; then
+            echo "Warning: --verbose is deprecated. Set log_level to DEBUG for the same effect."
+
     - name: Set Arguments
       shell: bash
       run: |
