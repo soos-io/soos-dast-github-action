@@ -70,10 +70,10 @@ The `soos-io/soos-dast-github-action` Action has properties which are passed to 
 | auth_username                     | [none]                     | Username to use in auth apps.    
 | auth_password                     | [none]                     | Password to use in auth apps.
 | auth_login_url                     | [none]                     | Login url to use in auth apps.  
-| auth_username_field                     | [none]                     | Username input id to use in auth apps.    
-| auth_password_field                     | [none]                     | Password input id to use in auth apps.
+| auth_username_field                     | [none]                     | Username input id/name/XPath to use in auth apps.    
+| auth_password_field                     | [none]                     | Password input id/name/XPath to use in auth apps.
 | auth_submit_field                     | [none]                     | Submit button id to use in auth apps.   
-| auth_second_submit_field                     | [none]                     | Second submit button id to use in auth apps (for multi-page forms).  
+| auth_second_submit_field                     | [none]                     | Second submit button id/name/XPath to use in auth apps (for multi-page forms).  
 | auth_delay_time                     | [none]                     | Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page) 
 | auth_submit_action                     | [none]                     | Submit action to perform on form filled. Possible values are click or submit. 
 | oauth_token_url                     | [none]                     | The fully qualified authentication URL that grants the access_token.    
