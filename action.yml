@@ -126,9 +126,6 @@ inputs:
   other_options:
     description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
-  verbose:
-    description: 'DEPRECATED - parameter has no effect. Set log_level to DEBUG for the same effect.'
-    required: false
   image_tag:
     description: 'The soosio/dast image tag to use; defaults to latest'
     required: false
@@ -163,13 +160,6 @@ runs:
           echo "Can't check version."
         fi
         printf '%.0s-' {1..80}
-        printf '\n'
-
-    - name: Check Deprecated Arguments
-      shell: bash
-      run: |
-        set +x  # Turn off command echoing
-        [ "${{ inputs.verbose }}" == "true" ] && echo "Warning: verbose is deprecated. Set log_level to DEBUG for the same effect."
         printf '\n'
 
     - name: Set Arguments
