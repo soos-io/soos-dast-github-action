@@ -195,7 +195,7 @@ runs:
         [ -n "${{ inputs.context_file }}" ] && args+="--contextFile=${{ inputs.context_file }} "
         [ -n "${{ inputs.context_user }}" ] && args+="--contextUser=${{ inputs.context_user }} "
         [[ "${{ inputs.debug }}" == "true" ]] && args+="--debug "
-        [[ "${{ inputs.disable_rules }}" == "true" ]] && args+="--disableRules "
+        [ -n "${{ inputs.disable_rules }}" ] && args+="--disableRules=${{ inputs.disable_rules }} "
         [ -n "${{ inputs.full_scan_minutes }}" ] && args+="--fullScanMinutes=${{ inputs.full_scan_minutes }} "
         [ -n "${{ inputs.log_level }}" ] && args+="--logLevel=${{ inputs.log_level }} "
         [ -n "${{ inputs.oauth_parameters }}" ] && args+="--oauthParameters=\"${{ inputs.oauth_parameters }}\" "
