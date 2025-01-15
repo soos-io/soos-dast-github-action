@@ -70,14 +70,19 @@ inputs:
     description: 'Version of application build artifacts.'
     required: false
     default: ''
+  export_format:
+    description: "Export format."
+    required: false
+  export_file_type:
+    description: "Export file type."
+    required: false
   operating_environment:
     description: 'System info regarding operating system, etc.'
     required: false
     default: ${{ runner.os }}
   output_format:
-    description: 'Output format for report to be generated (only SARIF supported at the moment).'
+    description: "DEPRECATED - parameter has no effect. Use export_format and export_file_type."
     required: false
-    default: ''
   request_headers:
     description: 'Set extra header requests.'
     required: false
@@ -196,6 +201,8 @@ runs:
         [ -n "${{ inputs.context_user }}" ] && args+="--contextUser=${{ inputs.context_user }} "
         [[ "${{ inputs.debug }}" == "true" ]] && args+="--debug "
         [ -n "${{ inputs.disable_rules }}" ] && args+="--disableRules=${{ inputs.disable_rules }} "
+        [ -n "${{ inputs.export_format }}" ] && args+="--exportFormat=\"${{ inputs.export_format }}\" "
+        [ -n "${{ inputs.export_file_type }}" ] && args+="--exportFileType=\"${{ inputs.export_file_type }}\" "
         [ -n "${{ inputs.full_scan_minutes }}" ] && args+="--fullScanMinutes=${{ inputs.full_scan_minutes }} "
         [ -n "${{ inputs.log_level }}" ] && args+="--logLevel=${{ inputs.log_level }} "
         [ -n "${{ inputs.oauth_parameters }}" ] && args+="--oauthParameters=\"${{ inputs.oauth_parameters }}\" "
