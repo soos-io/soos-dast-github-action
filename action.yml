@@ -80,9 +80,6 @@ inputs:
     description: 'System info regarding operating system, etc.'
     required: false
     default: ${{ runner.os }}
-  output_format:
-    description: "DEPRECATED - parameter has no effect. Use export_format and export_file_type."
-    required: false
   request_headers:
     description: 'Set extra header requests.'
     required: false
@@ -210,7 +207,6 @@ runs:
         [ -n "${{ inputs.on_failure }}" ] && args+="--onFailure=${{ inputs.on_failure }} "
         [ -n "${{ inputs.operating_environment }}" ] && args+="--operatingEnvironment=${{ inputs.operating_environment }} "
         [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\"${{ inputs.other_options }}\" "
-        [ -n "${{ inputs.output_format }}" ] && args+="--outputFormat=${{ inputs.output_format }} "
         [ -n "${{ inputs.project_name }}" ] && args+="--projectName=\"${{ inputs.project_name }}\" "
         [ -n "${{ inputs.request_headers }}" ] && args+="--requestHeaders=\"${{ inputs.request_headers }}\" "
         [ -n "${{ inputs.scan_mode }}" ] && args+="--scanMode=${{ inputs.scan_mode }} "
