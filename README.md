@@ -78,8 +78,6 @@ moment                       |
 | auth_second_submit_field                     | [none]                     | Second submit button id/name/XPath to use in auth apps (for multi-page forms).  
 | auth_delay_time                     | [none]                     | Delay time in seconds to wait for the page to load after performing actions in the form. (Used only on authFormType: wait_for_password and multi_page) 
 | auth_submit_action                     | [none]                     | Submit action to perform on form filled. Possible values are click or submit. 
-| oauth_token_url                     | [none]                     | The fully qualified authentication URL that grants the access_token.    
-| oauth_parameters                     | [none]                     | Parameters to be added to the oauth token request needs to be comma delimited. (eg: client_id:value, client_secret:value, grant_type:value).  
 
 #### Baseline Analysis
 It runs the [ZAP](https://www.zaproxy.org/) spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.
@@ -167,35 +165,6 @@ jobs:
         auth_submit_field: "submit-html-input-id"
 
 ```
-
-### Authenticate against an OAuth token url.
-
-In case you need to perform a DAST analysis against an OAuth application this is the workflow that you should follow. In this scenario the DAST tool will perform a request to get the `access_token` before doing any analysis.
-
-Workflow example:
-
-``` yaml
-on: [push]
-
-jobs:
-  synchronous-analysis-with-blocking-result:
-    name: SOOS DAST Scan
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - name: Run SOOS DAST Baseline Analysis performing OAuth
-      uses: soos-io/soos-dast-github-action@v2
-      with:
-        client_id: ${{ secrets.SOOS_CLIENT_ID }}
-        api_key: ${{ secrets.SOOS_API_KEY }}
-        project_name: "DAST-OAuth"
-        scan_mode: "baseline"
-        api_url: "https://api.soos.io/api/"
-        target_url: "https://example.com/"
-        oauth_token_url: "https://example.com/token"
-        oauth_parameters: "client_secret:value ,client_id:value , grant_type:value"
-```
-
 
 ## References
  - [soosio/dast on Docker hub](https://hub.docker.com/r/soosio/dast)
