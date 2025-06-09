@@ -119,12 +119,6 @@ inputs:
   auth_verification_url:
     description: 'URL used to verify authentication success. If authentication fails when this URL is provided, the scan will be terminated.'
     required: false
-  oauth_token_url:
-    description: 'The fully qualified authentication URL that grants the access_token.'
-    required: false
-  oauth_parameters:
-    description: 'Parameters to be added to the oauth token request. (eg: client_id:value, client_secret:value, grant_type:value).'
-    required: false
   other_options:
     description: 'Other command line arguments sent directly to the script for items not supported by other command line arguments'
     required: false
@@ -202,8 +196,6 @@ runs:
         [ -n "${{ inputs.export_file_type }}" ] && args+="--exportFileType=\"${{ inputs.export_file_type }}\" "
         [ -n "${{ inputs.full_scan_minutes }}" ] && args+="--fullScanMinutes=${{ inputs.full_scan_minutes }} "
         [ -n "${{ inputs.log_level }}" ] && args+="--logLevel=${{ inputs.log_level }} "
-        [ -n "${{ inputs.oauth_parameters }}" ] && args+="--oauthParameters=\"${{ inputs.oauth_parameters }}\" "
-        [ -n "${{ inputs.oauth_token_url }}" ] && args+="--oauthTokenUrl=${{ inputs.oauth_token_url }} "
         [ -n "${{ inputs.on_failure }}" ] && args+="--onFailure=${{ inputs.on_failure }} "
         [ -n "${{ inputs.operating_environment }}" ] && args+="--operatingEnvironment=${{ inputs.operating_environment }} "
         [ -n "${{ inputs.other_options }}" ] && args+="--otherOptions=\"${{ inputs.other_options }}\" "
