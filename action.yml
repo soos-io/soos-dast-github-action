@@ -213,4 +213,4 @@ runs:
       shell: bash
       run: |
         docker pull soosio/dast:${{ inputs.image_tag }}
-        eval "docker run -v ${{ github.workspace }}:/zap/wrk/:rw --rm soosio/dast:${{ inputs.image_tag }} $args"
+        eval "docker run -u zap -v ${{ github.workspace }}:/zap/wrk/:rw --rm soosio/dast:${{ inputs.image_tag }} $args"
